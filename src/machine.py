@@ -11,7 +11,7 @@ class Machine:
         self.soap = soap
 
     def refill_ingredients(self):
-        print("What ingredient would you like to refill?\n")
+        print("\nWhat ingredient would you like to refill?\n")
         print(f"[1] Eggs, current amount = {self.eggs}/6\n")
         print(f"[2] Milk, current amount = {self.milk}/500\n")
         print(f"[3] Butter, current amount = {self.butter}/500\n")
@@ -33,63 +33,99 @@ class Machine:
             
         match ingredient:
             case 1:
-                refill_amount = int(input("\nHow many eggs would you like to add?"))
+                try:
+                    refill_amount = int(input("\nHow many eggs would you like to add?\n"))
+                except ValueError:
+                    print("\n -- Invalid input -- I can only accept numbers\n")
+                    self.refill_ingredients()
                 if refill_amount + self.eggs > 6:
                     print("\nI cannot store more than 6 eggs!\n")
                     self.refill_ingredients()
                 self.eggs += refill_amount
                 print(f"I now have {self.eggs} eggs!")
             case 2:
-                refill_amount = int(input("\nHow much milk(ml) would you like to add?"))
+                try:
+                    refill_amount = int(input("\nHow much milk(ml) would you like to add?\n"))
+                except ValueError:
+                    print("\n -- Invalid input -- I can only accept numbers\n")
+                    self.refill_ingredients()
                 if refill_amount + self.milk > 500:
                     print("\nI cannot store more than 500ml milk!\n")
                     self.refill_ingredients()
                 self.milk += refill_amount
                 print(f"I now have {self.milk}mls of milk!")
             case 3:
-                refill_amount = int(input("\nHow much butter(g) would you like to add?"))
+                try:
+                    refill_amount = int(input("\nHow much butter(g) would you like to add?\n"))
+                except ValueError:
+                    print("\n -- Invalid input -- I can only accept numbers\n")
+                    self.refill_ingredients()
                 if refill_amount + self.butter > 500:
                     print("\nI cannot store more than 500g butter!\n")
                     self.refill_ingredients()
                 self.butter += refill_amount
                 print(f"I now have {self.butter}g of butter!")
             case 4:
-                refill_amount = int(input("\nHow much flour(g) would you like to add?"))
+                try:
+                    refill_amount = int(input("\nHow much flour(g) would you like to add?\n"))
+                except ValueError:
+                    print("\n -- Invalid input -- I can only accept numbers\n")
+                    self.refill_ingredients()
                 if refill_amount + self.flour > 500:
                     print("\nI cannot store more than 500g flour!\n")
                     self.refill_ingredients()
                 self.flour += refill_amount
                 print(f"I now have {self.flour}g of flour!")
             case 5:
-                refill_amount = int(input("\nHow much sugar(g) would you like to add?"))
+                try:
+                    refill_amount = int(input("\nHow much sugar(g) would you like to add?\n"))
+                except ValueError:
+                    print("\n -- Invalid input -- I can only accept numbers\n")
+                    self.refill_ingredients()
                 if refill_amount + self.sugar > 500:
-                    print("\nYou cannot add more than 500g sugar!\n")
+                    print("\nI cannot store more than 500g sugar!\n")
                     self.refill_ingredients()
                 self.sugar += refill_amount
                 print(f"You now have {self.sugar} sugar!")
             case 6:
-                refill_amount = int(input("\nHow much chocolate(g) would you like to add?"))
+                try:
+                    refill_amount = int(input("\nHow much chocolate(g) would you like to add?\n"))
+                except ValueError:
+                    print("\n -- Invalid input -- I can only accept numbers\n")
+                    self.refill_ingredients()
                 if refill_amount + self.chocolate > 300:
                     print("\nI cannot store more than 300g chocolate!\n")
                     self.refill_ingredients()
                 self.chocolate += refill_amount
                 print(f"I now have {self.chocolate}g of chocolate!")
             case 7:
-                refill_amount = int(input("\nHow much vanilla(ml) would you like to add?"))
+                try:
+                    refill_amount = int(input("\nHow much vanilla(ml) would you like to add?\n"))
+                except ValueError:
+                    print("\n -- Invalid input -- I can only accept numbers\n")
+                    self.refill_ingredients()
                 if refill_amount + self.vanilla > 50:
                     print("\nI cannot store more than 50ml vanilla!\n")
                     self.refill_ingredients()
                 self.vanilla += refill_amount
                 print(f"I now have {self.vanilla}mls of vanilla!")
             case 8:
-                refill_amount = int(input("\nHow much water(ml) would you like to add?"))
+                try:
+                    refill_amount = int(input("\nHow much water(ml) would you like to add?\n"))
+                except ValueError:
+                    print("\n -- Invalid input -- I can only accept numbers\n")
+                    self.refill_ingredients()
                 if refill_amount + self.water > 250:
                     print("\nI cannot store more than 250ml water!\n")
                     self.refill_ingredients()
                 self.water += refill_amount
                 print(f"I now have {self.water}mls of water!")
             case 9:
-                refill_amount = int(input("\nHow much soap(g) would you like to add?"))
+                try:
+                    refill_amount = int(input("\nHow much soap(g) would you like to add?\n"))
+                except ValueError:
+                    print("\n -- Invalid input -- I can only accept numbers\n")
+                    self.refill_ingredients()
                 if refill_amount + self.soap > 50:
                     print("\nI cannot store more than 50g soap!\n")
                     self.refill_ingredients()
