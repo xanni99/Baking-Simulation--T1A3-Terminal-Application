@@ -13,7 +13,7 @@ class Machine:
             "Sugar": 500,
             "Chocolate": 300,
             "Vanilla": 50,
-            "Water": 250,
+            "Water": 300,
             "Soap": 50
         }
 
@@ -63,8 +63,19 @@ class Machine:
         pass
 
     def clean_machine(self):
-        pass
+        if self.ingredients["Water"] >= 100 and self.ingredients["Soap"] >= 15:
+            self.ingredients["Water"] -= 100
+            self.ingredients["Soap"] -= 15
+            print(f"Cleaning Successful - I am now Spick and Span!")
+            self.save_ingredients()
+        else:
+            print("Unable to clean machine :(\n")
+            print("I do not have enough water and soap, please refill these")
 
 # test = Machine()
+
+# test.clean_machine()
+
+
 
 

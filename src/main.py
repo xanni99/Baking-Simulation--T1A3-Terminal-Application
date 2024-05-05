@@ -4,27 +4,27 @@ import user_interface as ui
 
 def main():
     ui.welcome_message()
-    Baker3000 = Machine()
-    Recipes = Recipe()
+    baker3000 = Machine()
+    recipes = Recipe()
     while True:
         ui.user_menu()
         user_action = input("\n:")
         match user_action:
             case "1":
                 ui.clear()
-                Baker3000.bake_treat()
+                baker3000.bake_treat()
             case "2":
                 ui.clear()
-                Baker3000.list_ingredients()
+                baker3000.list_ingredients()
             case "3":
                 ui.clear()
-                Baker3000.refill_ingredients()
+                baker3000.refill_ingredients()
             case "4":
                 ui.clear()
-                Recipes.add_recipe()
+                recipes.add_recipe()
             case "5":
                 ui.clear()
-                Baker3000.clean_machine()
+                baker3000.clean_machine()
             case "6":
                 ui.clear()
                 ui.goodbye_message()
