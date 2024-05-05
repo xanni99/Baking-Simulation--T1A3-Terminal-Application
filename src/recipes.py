@@ -22,18 +22,6 @@ class Recipe:
             print(key, value["name"])
 
 
-    def select_recipe(self):
-        try:
-            recipe_number = int(input("\nPlease enter the number of the recipe you would like to make: "))
-            selected_recipe = self.recipes[recipe_number]
-            return selected_recipe
-        except ValueError:
-            print("\n -- Invalid input -- I can only accept numbers\n")
-            self.select_recipe()
-        except KeyError:
-            print("\n -- Invalid input -- Please enter a number listed \n")
-            self.select_recipe()
-
     def add_recipe(self):
         print("Let's add a new recipe!")
         name = input("Enter the name of the recipe: ")
@@ -67,7 +55,7 @@ class Recipe:
         print(f"You have succsessfully added '{name}' to the list of recipes!")
 
 
-test = Recipe()
+# test = Recipe()
 
 
-test.add_recipe ()
+# test.select_recipe ()

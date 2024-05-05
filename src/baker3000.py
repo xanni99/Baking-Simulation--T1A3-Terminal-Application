@@ -1,5 +1,7 @@
 import json
 
+from recipes import Recipe
+
 class Machine:
     def __init__(self):
         self.ingredients = self.load_ingredients()
@@ -57,10 +59,14 @@ class Machine:
         finally:
             self.save_ingredients()
 
-    # def bake_treat(self):
+    # def bake_treat(self,choice):
+
+    
+
+
 
     # def clean_machine(self):
 
 test = Machine()
 
-test.refill_ingredients()
+
