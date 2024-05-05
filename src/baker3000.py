@@ -34,6 +34,7 @@ class Machine:
             print(f'{key} - I currently have {value} available')
 
     def refill_ingredients(self):
+        self.list_ingredients()
         try:
             ingredient_to_refill = input("\nPlease enter the name of the ingredient you would like to refill\n").capitalize()
             max_quantity = self.max_quantities.get(ingredient_to_refill)
@@ -58,13 +59,11 @@ class Machine:
         finally:
             self.save_ingredients()
 
-    # def bake_treat(self,choice):
+    def bake_treat(self):
+        pass
 
-    
-
-
-
-    # def clean_machine(self):
+    def clean_machine(self):
+        pass
 
 # test = Machine()
 
