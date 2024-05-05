@@ -1,3 +1,5 @@
+import os
+
 def welcome_message():
     print("Welcome to the Baker 3000. I can't wait to bake you a tasty treat!")
 
@@ -12,3 +14,6 @@ def user_menu():
     print("4. Add a Recipe")
     print("5. Clean Machine")
     print("6. Turn Off")
+
+def clear():
+    os.system("cls" if os.name == "nt" else "clear")
