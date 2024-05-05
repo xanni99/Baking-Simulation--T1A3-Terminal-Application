@@ -33,7 +33,6 @@ class Machine:
         for key, value in self.ingredients.items():
             print(f'{key} - I currently have {value} available')
 
-
     def refill_ingredients(self):
         try:
             ingredient_to_refill = input("\nPlease enter the name of the ingredient you would like to refill\n").capitalize()
@@ -67,6 +66,6 @@ class Machine:
 
     # def clean_machine(self):
 
-test = Machine()
+# test = Machine()
 
 

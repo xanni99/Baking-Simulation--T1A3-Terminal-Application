@@ -21,7 +21,6 @@ class Recipe:
         for key, value in self.recipes.items():
             print(key, value["name"])
 
-
     def add_recipe(self):
         print("Let's add a new recipe!")
         name = input("Enter the name of the recipe: ")
