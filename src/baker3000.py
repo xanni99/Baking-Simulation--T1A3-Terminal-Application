@@ -29,22 +29,7 @@ class Machine:
 
     def list_ingredients(self):
         for key, value in self.ingredients.items():
-            print(f'{key} - I currently have {value} available')   
-
-    # def select_ingredient(self):
-    #     try:
-    #         ingredient_name = input("\nPlease enter the name of the ingredient you would like to refill: ")
-    #         selected_ingredient = self.ingredients[ingredient_name.capitalize()]
-    #         return selected_ingredient
-    #     except ValueError:
-    #         if ingredient_name.capitalized() not in self.ingredients:
-    #             print("\n -- Invalid input -- Please enter an ingredient listed \n")
-    #             self.select_ingredient()
-    #     except KeyError:
-    #         print("\n -- Invalid input -- I only accept names of ingredients listed \n")
-    #         self.select_ingredient()
-    #     test = selected_ingredient
-    #     print(test)
+            print(f'{key} - I currently have {value} available')
 
 
     def refill_ingredients(self):
@@ -71,14 +56,11 @@ class Machine:
             self.refill_ingredients()
         finally:
             self.save_ingredients()
-        
 
+    # def bake_treat(self):
 
+    # def clean_machine(self):
 
 test = Machine()
-
-# test.refill_ingredients()
-
-# print(test.max_quantities.get("Eggs"))
 
 test.refill_ingredients()
