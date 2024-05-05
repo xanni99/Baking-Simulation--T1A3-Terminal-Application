@@ -50,7 +50,7 @@ class Machine:
                     print("\n -- Invalid input -- I can only accept numbers\n")
                     self.refill_ingredients()
                 if refill_amount + self.milk > 500:
-                    print("\nI cannot store more than 500ml milk!\n")
+                    print("\nI cannot store more than 500ml of milk!\n")
                     self.refill_ingredients()
                 self.milk += refill_amount
                 print(f"I now have {self.milk}mls of milk!")
@@ -61,7 +61,7 @@ class Machine:
                     print("\n -- Invalid input -- I can only accept numbers\n")
                     self.refill_ingredients()
                 if refill_amount + self.butter > 500:
-                    print("\nI cannot store more than 500g butter!\n")
+                    print("\nI cannot store more than 500g of butter!\n")
                     self.refill_ingredients()
                 self.butter += refill_amount
                 print(f"I now have {self.butter}g of butter!")
@@ -72,7 +72,7 @@ class Machine:
                     print("\n -- Invalid input -- I can only accept numbers\n")
                     self.refill_ingredients()
                 if refill_amount + self.flour > 500:
-                    print("\nI cannot store more than 500g flour!\n")
+                    print("\nI cannot store more than 500g of flour!\n")
                     self.refill_ingredients()
                 self.flour += refill_amount
                 print(f"I now have {self.flour}g of flour!")
@@ -83,10 +83,10 @@ class Machine:
                     print("\n -- Invalid input -- I can only accept numbers\n")
                     self.refill_ingredients()
                 if refill_amount + self.sugar > 500:
-                    print("\nI cannot store more than 500g sugar!\n")
+                    print("\nI cannot store more than 500g of sugar!\n")
                     self.refill_ingredients()
                 self.sugar += refill_amount
-                print(f"You now have {self.sugar} sugar!")
+                print(f"You now have {self.sugar}g of sugar!")
             case 6:
                 try:
                     refill_amount = int(input("\nHow much chocolate(g) would you like to add?\n"))
@@ -94,7 +94,7 @@ class Machine:
                     print("\n -- Invalid input -- I can only accept numbers\n")
                     self.refill_ingredients()
                 if refill_amount + self.chocolate > 300:
-                    print("\nI cannot store more than 300g chocolate!\n")
+                    print("\nI cannot store more than 300g of chocolate!\n")
                     self.refill_ingredients()
                 self.chocolate += refill_amount
                 print(f"I now have {self.chocolate}g of chocolate!")
@@ -105,7 +105,7 @@ class Machine:
                     print("\n -- Invalid input -- I can only accept numbers\n")
                     self.refill_ingredients()
                 if refill_amount + self.vanilla > 50:
-                    print("\nI cannot store more than 50ml vanilla!\n")
+                    print("\nI cannot store more than 50ml of vanilla!\n")
                     self.refill_ingredients()
                 self.vanilla += refill_amount
                 print(f"I now have {self.vanilla}mls of vanilla!")
@@ -116,7 +116,7 @@ class Machine:
                     print("\n -- Invalid input -- I can only accept numbers\n")
                     self.refill_ingredients()
                 if refill_amount + self.water > 250:
-                    print("\nI cannot store more than 250ml water!\n")
+                    print("\nI cannot store more than 250ml of water!\n")
                     self.refill_ingredients()
                 self.water += refill_amount
                 print(f"I now have {self.water}mls of water!")
@@ -127,10 +127,10 @@ class Machine:
                     print("\n -- Invalid input -- I can only accept numbers\n")
                     self.refill_ingredients()
                 if refill_amount + self.soap > 50:
-                    print("\nI cannot store more than 50g soap!\n")
+                    print("\nI cannot store more than 50mls of soap!\n")
                     self.refill_ingredients()
                 self.soap += refill_amount
-                print(f"I now have {self.soap}g of soap!")
+                print(f"I now have {self.soap}mls of soap!")
             case _:
                 print("\n Please enter a number between 1 and 9\n")
                 self.refill_ingredients()
