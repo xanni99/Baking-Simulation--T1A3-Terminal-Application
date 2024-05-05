@@ -3,6 +3,17 @@ import json
 class Machine:
     def __init__(self):
         self.ingredients = self.load_ingredients()
+        self.max_quantities = {
+            "Eggs": 6,
+            "Milk": 500,
+            "Butter": 500,
+            "Flour": 500,
+            "Sugar": 500,
+            "Chocolate": 300,
+            "Vanilla": 50,
+            "Water": 250,
+            "Soap": 50
+        }
 
     def load_ingredients(self):
         try:
@@ -20,23 +31,54 @@ class Machine:
         for key, value in self.ingredients.items():
             print(f'{key} - I currently have {value} available')   
 
-    def select_ingredient(self):
+    # def select_ingredient(self):
+    #     try:
+    #         ingredient_name = input("\nPlease enter the name of the ingredient you would like to refill: ")
+    #         selected_ingredient = self.ingredients[ingredient_name.capitalize()]
+    #         return selected_ingredient
+    #     except ValueError:
+    #         if ingredient_name.capitalized() not in self.ingredients:
+    #             print("\n -- Invalid input -- Please enter an ingredient listed \n")
+    #             self.select_ingredient()
+    #     except KeyError:
+    #         print("\n -- Invalid input -- I only accept names of ingredients listed \n")
+    #         self.select_ingredient()
+    #     test = selected_ingredient
+    #     print(test)
+
+
+    def refill_ingredients(self):
         try:
-            ingredient_name = input("\nPlease enter the name of the ingredient you would like to refill: ")
-            selected_ingredient = self.ingredients[ingredient_name.capitalize()]
-            return selected_ingredient
+            ingredient_to_refill = input("\nPlease enter the name of the ingredient you would like to refill\n").capitalize()
+            max_quantity = self.max_quantities.get(ingredient_to_refill)
+            if max_quantity is not None:
+                current_quantity = self.ingredients.get(ingredient_to_refill)
+                refill_amount = int(input(f"How much/many {ingredient_to_refill} would you like to refill? I currently have {self.ingredients[ingredient_to_refill]} out of {self.max_quantities.get(ingredient_to_refill)}\n"))
+                if refill_amount > 0:
+                    if current_quantity + refill_amount <= max_quantity:
+                        self.ingredients[ingredient_to_refill] += refill_amount
+                        print(f"I now have {self.ingredients.get(ingredient_to_refill)} {ingredient_to_refill}")
+                    else:
+                        print(f"I cannot store more than {max_quantity} units of {ingredient_to_refill}")
+                else:
+                    print("Please enter a positive number greater than 0")
+                    self.refill_ingredients()
+            else:
+                print(f"{ingredient_to_refill} is not a valid ingredient")
+                self.refill_ingredients()
         except ValueError:
-            if ingredient_name.capitalized() not in self.ingredients:
-                print("\n -- Invalid input -- Please enter an ingredient listed \n")
-                self.select_ingredient()
-        except KeyError:
-            print("\n -- Invalid input -- I only accept names of ingredients listed \n")
-            self.select_ingredient()
+            print("\n -- Invalid input -- I can only accept numbers\n")
+            self.refill_ingredients()
+        finally:
+            self.save_ingredients()
+        
 
 
-    # def refill_ingredients(self):
 
 test = Machine()
 
-test.list_ingredients ()
-test.select_ingredient ()
+# test.refill_ingredients()
+
+# print(test.max_quantities.get("Eggs"))
+
+test.refill_ingredients()
