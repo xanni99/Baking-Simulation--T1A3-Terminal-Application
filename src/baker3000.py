@@ -59,9 +59,9 @@ class Machine:
         finally:
             self.save_ingredients()
 
-    def bake_treat(self):
+    def bake_treat(self, choice):
         pass
-
+        
     def clean_machine(self):
         if self.ingredients["Water"] >= 100 and self.ingredients["Soap"] >= 15:
             self.ingredients["Water"] -= 100

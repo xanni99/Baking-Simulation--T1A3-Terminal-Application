@@ -12,7 +12,8 @@ def main():
         match user_action:
             case "1":
                 ui.clear()
-                baker3000.bake_treat()
+                choice = recipes.recipe_selection()
+                baker3000.bake_treat(choice)
             case "2":
                 ui.clear()
                 baker3000.list_ingredients()
