@@ -1,11 +1,11 @@
 {
-    "eggs": 6,
-    "milk": 500,
-    "butter": 500,
-    "flour": 500,
-    "sugar": 500,
-    "chocolate": 300,
-    "vanilla": 50,
-    "water": 250,
-    "soap": 50
+    "Eggs": 6,
+    "Milk": 500,
+    "Butter": 500,
+    "Flour": 500,
+    "Sugar": 500,
+    "Chocolate": 300,
+    "Vanilla": 50,
+    "Water": 250,
+    "Soap": 50
 }
