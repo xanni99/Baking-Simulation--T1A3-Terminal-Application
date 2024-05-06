@@ -23,7 +23,7 @@ def main():
             case "2":
                 ui.clear()
                 baker3000.list_ingredients()
-                time.sleep(10)
+                time.sleep(12)
                 print("\nReturning to Main Menu in 3 seconds...")
                 time.sleep(3)
             case "3":

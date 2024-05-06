@@ -74,7 +74,4 @@ class Recipe:
             print("\n -- Invalid input -- I can only accept numbers, please start again\n")
             self.recipe_selection()
 
-# recipes = Recipe()
 
-
-# test.select_recipe ()

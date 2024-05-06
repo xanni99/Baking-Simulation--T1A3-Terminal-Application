@@ -1,9 +1,9 @@
 import json
-
+import colorama
+from colorama import Fore
+colorama.init(autoreset=True)
 import time
-
 from recipes import Recipe
-
 from user_interface import clear
 
 
@@ -18,7 +18,7 @@ class Machine:
             "flour": 600,
             "sugar": 600,
             "chocolate": 400,
-            "vanilla": 50,
+            "vanilla": 100,
             "water": 300,
             "soap": 50,
         }
@@ -37,7 +37,16 @@ class Machine:
 
     def list_ingredients(self):
         for key, value in self.ingredients.items():
-            print(f"{key.capitalize()} - I currently have {value} available")
+            max_quantity = self.max_quantities.get(key)
+            if value >= 0.55 * max_quantity:
+                print(f"{Fore.GREEN} {key.capitalize()} - I currently have {value} available")
+            if value >= 0.35 * max_quantity and value <= 0.55 * max_quantity:
+                print(f"{Fore.YELLOW} {key.capitalize()} -  I currently have {value} available")
+            if value >= 0.35 * max_quantity and value <= 0:
+                print(f"{Fore.RED} {key.capitalize()} - I currently have {value} available")
+        print(f"\n{Fore.GREEN} = Enough of ingredient to make ALL recipes - No need to refill")
+        print(f"{Fore.YELLOW} = Enough of ingredient to make AT LEAST 1 recipe - You may need to refill")
+        print(f"{Fore.RED} = Not enough of ingredient to make ANY recipes - You need to refill")
 
     def refill_ingredients(self):
         self.list_ingredients()
