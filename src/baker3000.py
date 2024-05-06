@@ -74,7 +74,49 @@ class Machine:
             self.save_ingredients()
 
     def bake_treat(self, choice):
-        pass
+        if self.ingredients["Eggs"] >= self.recipes.recipes[choice]["eggs"]:
+            if self.ingredients["Milk"] >= self.recipes.recipes[choice]["milk"]:
+                if self.ingredients["Butter"] >= self.recipes.recipes[choice]["butter"]:
+                    if self.ingredients["Flour"] >= self.recipes.recipes[choice]["flour"]:
+                        if self.ingredients["Sugar"] >= self.recipes.recipes[choice]["sugar"]:
+                            if self.ingredients["Chocolate"] >= self.recipes.recipes[choice]["chocolate"]:
+                                if self.ingredients["Vanilla"] >= self.recipes.recipes[choice]["vanilla"]:
+                                    print(f"Baking {self.recipes.recipes[choice]["name"]}")
+                                    self.ingredients["Eggs"] -= self.recipes.recipes[choice]["eggs"]
+                                    self.ingredients["Milk"] -= self.recipes.recipes[choice]["milk"]
+                                    self.ingredients["Butter"] -= self.recipes.recipes[choice]["butter"]
+                                    self.ingredients["Flour"] -= self.recipes.recipes[choice]["flour"]
+                                    self.ingredients["Sugar"] -= self.recipes.recipes[choice]["sugar"]
+                                    self.ingredients["Chocolate"] -= self.recipes.recipes[choice]["chocolate"]
+                                    self.ingredients["Vanilla"] -= self.recipes.recipes[choice]["vanilla"]
+                                else:
+                                    print(
+                                        f"I do not have enough Vanilla. This recipe requires {self.recipes.recipes[choice]['vanilla']} and I currently have {self.ingredients['Vanilla']}"
+                                    )
+                            else:
+                                print(
+                                    f"I do not have enough Chocolate. This recipe requires {self.recipes.recipes[choice]['chocolate']} and I currently have {self.ingredients['Chocolate']}"
+                                )
+                        else:
+                            print(
+                                f"I do not have enough Sugar. This recipe requires {self.recipes.recipes[choice]['sugar']} and I currently have {self.ingredients['Sugar']}"
+                            )
+                    else:
+                        print(
+                            f"I do not have enough Flour. This recipe requires {self.recipes.recipes[choice]['flour']} and I currently have {self.ingredients['Flour']}"
+                        )
+                else:
+                    print(
+                        f"I do not have enough Butter. This recipe requires {self.recipes.recipes[choice]['butter']} and I currently have {self.ingredients['Butter']}"
+                    )
+            else:
+                print(
+                    f"I do not have enough Milk. This recipe requires {self.recipes.recipes[choice]['milk']} and I currently have {self.ingredients['Milk']}"
+                )
+        else:
+            print(
+                f"I do not have enough Eggs. This recipe requires {self.recipes.recipes[choice]['eggs']} and I currently have {self.ingredients['Eggs']}"
+            )
 
     def clean_machine(self):
         if self.ingredients["Water"] >= 100 and self.ingredients["Soap"] >= 15:
