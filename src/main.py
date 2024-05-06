@@ -18,12 +18,16 @@ def main():
                 time.sleep(10)
             case "2":
                 baker3000.list_ingredients()
+                time.sleep(10)
             case "3":
                 baker3000.refill_ingredients()
+                time.sleep(10)
             case "4":
                 recipes.add_recipe()
+                time.sleep(10)
             case "5":
                 baker3000.clean_machine()
+                time.sleep(10)
             case "6":
                 ui.goodbye_message()
                 break
