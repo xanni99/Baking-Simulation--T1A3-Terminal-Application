@@ -10,15 +10,15 @@ class Machine:
         self.recipes = Recipe()
         self.ingredients = self.load_ingredients()
         self.max_quantities = {
-            "Eggs": 6,
-            "Milk": 500,
-            "Butter": 500,
-            "Flour": 500,
-            "Sugar": 500,
-            "Chocolate": 300,
-            "Vanilla": 50,
-            "Water": 300,
-            "Soap": 50,
+            "eggs": 6,
+            "milk": 500,
+            "butter": 500,
+            "flour": 500,
+            "sugar": 500,
+            "chocolate": 300,
+            "vanilla": 50,
+            "water": 300,
+            "soap": 50,
         }
 
     def load_ingredients(self):
@@ -42,7 +42,7 @@ class Machine:
         try:
             ingredient_to_refill = input(
                 "\nPlease enter the name of the ingredient you would like to refill\n"
-            ).capitalize()
+            ).lower()
             max_quantity = self.max_quantities.get(ingredient_to_refill)
             if max_quantity is not None:
                 current_quantity = self.ingredients.get(ingredient_to_refill)
@@ -74,56 +74,24 @@ class Machine:
             self.save_ingredients()
 
     def bake_treat(self, choice):
-
-        if self.ingredients["Eggs"] >= self.recipes.recipes[choice]["eggs"]:
-            if self.ingredients["Milk"] >= self.recipes.recipes[choice]["milk"]:
-                if self.ingredients["Butter"] >= self.recipes.recipes[choice]["butter"]:
-                    if self.ingredients["Flour"] >= self.recipes.recipes[choice]["flour"]:
-                        if self.ingredients["Sugar"] >= self.recipes.recipes[choice]["sugar"]:
-                            if self.ingredients["Chocolate"] >= self.recipes.recipes[choice]["chocolate"]:
-                                if self.ingredients["Vanilla"] >= self.recipes.recipes[choice]["vanilla"]:
-                                    print(f"Baking {self.recipes.recipes[choice]["name"]}")
-                                    self.ingredients["Eggs"] -= self.recipes.recipes[choice]["eggs"]
-                                    self.ingredients["Milk"] -= self.recipes.recipes[choice]["milk"]
-                                    self.ingredients["Butter"] -= self.recipes.recipes[choice]["butter"]
-                                    self.ingredients["Flour"] -= self.recipes.recipes[choice]["flour"]
-                                    self.ingredients["Sugar"] -= self.recipes.recipes[choice]["sugar"]
-                                    self.ingredients["Chocolate"] -= self.recipes.recipes[choice]["chocolate"]
-                                    self.ingredients["Vanilla"] -= self.recipes.recipes[choice]["vanilla"]
-                                    self.save_ingredients()
-                                else:
-                                    print(
-                                        f"I do not have enough Vanilla. This recipe requires {self.recipes.recipes[choice]['vanilla']} and I currently have {self.ingredients['Vanilla']}"
-                                    )
-                            else:
-                                print(
-                                    f"I do not have enough Chocolate. This recipe requires {self.recipes.recipes[choice]['chocolate']} and I currently have {self.ingredients['Chocolate']}"
-                                )
-                        else:
-                            print(
-                                f"I do not have enough Sugar. This recipe requires {self.recipes.recipes[choice]['sugar']} and I currently have {self.ingredients['Sugar']}"
-                            )
-                    else:
-                        print(
-                            f"I do not have enough Flour. This recipe requires {self.recipes.recipes[choice]['flour']} and I currently have {self.ingredients['Flour']}"
-                        )
-                else:
-                    print(
-                        f"I do not have enough Butter. This recipe requires {self.recipes.recipes[choice]['butter']} and I currently have {self.ingredients['Butter']}"
-                    )
-            else:
-                print(
-                    f"I do not have enough Milk. This recipe requires {self.recipes.recipes[choice]['milk']} and I currently have {self.ingredients['Milk']}"
-                )
-        else:
-            print(
-                f"I do not have enough Eggs. This recipe requires {self.recipes.recipes[choice]['eggs']} and I currently have {self.ingredients['Eggs']}"
-            )
+        for ingredient, required_amount in self.recipes.recipes[choice].items():
+            if ingredient in ['name', 'bake time']:
+                continue
+            if self.ingredients[ingredient] < required_amount:
+                print(f"I do not have enough {ingredient}. This recipe requires {required_amount} and I currently have {self.ingredients[ingredient]}")
+                return
+        print(f"Baking {self.recipes.recipes[choice]['name']}")
+        # Reduce ingredient amounts
+        for ingredient, required_amount in self.recipes.recipes[choice].items():
+            if ingredient in ['name', 'bake time']:
+                continue
+            self.ingredients[ingredient] -= required_amount
+        self.save_ingredients()
 
     def clean_machine(self):
-        if self.ingredients["Water"] >= 100 and self.ingredients["Soap"] >= 15:
-            self.ingredients["Water"] -= 100
-            self.ingredients["Soap"] -= 15
+        if self.ingredients["water"] >= 100 and self.ingredients["soap"] >= 15:
+            self.ingredients["water"] -= 100
+            self.ingredients["soap"] -= 15
             print("Cleaning Successful - I am now Spick and Span!")
             self.save_ingredients()
         else:
@@ -131,9 +99,11 @@ class Machine:
             print("I do not have enough water and soap, please refill these")
 
 
-# test = Machine()
+
+test = Machine()
 # # test.list_ingredients()
-# test.bake_treat('1')
+test.bake_treat('1')
+# print(test.recipes.recipes['1'].items())
 
 # print(test.ingredients["Eggs"])
 # print(test.recipes.recipes['1']["eggs"])
