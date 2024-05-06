@@ -74,6 +74,7 @@ class Machine:
             self.save_ingredients()
 
     def bake_treat(self, choice):
+
         if self.ingredients["Eggs"] >= self.recipes.recipes[choice]["eggs"]:
             if self.ingredients["Milk"] >= self.recipes.recipes[choice]["milk"]:
                 if self.ingredients["Butter"] >= self.recipes.recipes[choice]["butter"]:
@@ -89,6 +90,7 @@ class Machine:
                                     self.ingredients["Sugar"] -= self.recipes.recipes[choice]["sugar"]
                                     self.ingredients["Chocolate"] -= self.recipes.recipes[choice]["chocolate"]
                                     self.ingredients["Vanilla"] -= self.recipes.recipes[choice]["vanilla"]
+                                    self.save_ingredients()
                                 else:
                                     print(
                                         f"I do not have enough Vanilla. This recipe requires {self.recipes.recipes[choice]['vanilla']} and I currently have {self.ingredients['Vanilla']}"
@@ -130,4 +132,8 @@ class Machine:
 
 
 # test = Machine()
-# test.bake_treat(1)
+# # test.list_ingredients()
+# test.bake_treat('1')
+
+# print(test.ingredients["Eggs"])
+# print(test.recipes.recipes['1']["eggs"])

@@ -1,6 +1,7 @@
 from baker3000 import Machine
 from recipes import Recipe
 import user_interface as ui
+import time
 
 def main():
     ui.welcome_message()
@@ -11,8 +12,10 @@ def main():
         user_action = input("\n:")
         match user_action:
             case "1":
-                choice = recipes.recipe_selection()
+                choice_number = recipes.recipe_selection()
+                choice = str(choice_number)
                 baker3000.bake_treat(choice)
+                time.sleep(10)
             case "2":
                 baker3000.list_ingredients()
             case "3":
