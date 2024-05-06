@@ -11,23 +11,17 @@ def main():
         user_action = input("\n:")
         match user_action:
             case "1":
-                ui.clear()
                 choice = recipes.recipe_selection()
                 baker3000.bake_treat(choice)
             case "2":
-                ui.clear()
                 baker3000.list_ingredients()
             case "3":
-                ui.clear()
                 baker3000.refill_ingredients()
             case "4":
-                ui.clear()
                 recipes.add_recipe()
             case "5":
-                ui.clear()
                 baker3000.clean_machine()
             case "6":
-                ui.clear()
                 ui.goodbye_message()
                 break
             case _:

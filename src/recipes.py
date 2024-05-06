@@ -57,11 +57,11 @@ class Recipe:
         self.list_recipes()
         try:
             recipe_to_bake = int(input("\nEnter the number of the recipe you would like to bake\n"))
-            if recipe_to_bake in self.recipes:
-                return recipe_to_bake
-            else:
-                print(f"{recipe_to_bake} is not a valid recipe number")
-                self.recipe_selection()
+            # if recipe_to_bake in self.recipes:
+            return recipe_to_bake
+            # else:
+            #     print(f"{recipe_to_bake} is not a valid recipe number\n")
+            #     self.recipe_selection()
         except ValueError:
             print("\n -- Invalid input -- I can only accept numbers, please start again\n")
             self.recipe_selection()
