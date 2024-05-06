@@ -11,7 +11,7 @@ def goodbye_message():
 
 def user_menu():
     clear()
-    print("What would you like to do? \nPlease select a number from the list below\n")
+    print("What would you like to do?\n \nPlease select a number from the list below\n")
     print("1. Bake a Treat!")
     print("2. View Supply Levels")
     print("3. Refill Ingredients")

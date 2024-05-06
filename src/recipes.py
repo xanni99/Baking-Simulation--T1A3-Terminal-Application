@@ -1,4 +1,6 @@
 import json
+from user_interface import clear
+import time
 
 class Recipe:
     def __init__(self):
@@ -22,19 +24,21 @@ class Recipe:
             print(key, value["name"])
 
     def add_recipe(self):
-        print("Let's add a new recipe!")
-        name = input("Enter the name of the recipe: ")
+        print("Let's add a new recipe!\n")
+        name = input("Enter the name of the recipe: \n")
         try:
-            eggs = int(input("Enter the number of eggs (if no eggs are used enter 0): "))
-            milk = int(input("Enter the amount of milk(mls) (if no milk is used enter 0): "))
-            butter = int(input("Enter the amount of butter(g) (if no butter is used enter 0): "))
-            flour = int(input("Enter the amount of flour(g) (if no flour is used enter 0): "))
-            sugar = int(input("Enter the amount of sugar(g) (if no sugar is used enter 0): "))
-            chocolate = int(input("Enter the amount of chocolate(g) (if no chocolate is used enter 0): "))
-            vanilla = int(input("Enter the amount of vanilla(mls) (if no vanilla is used enter 0): "))
-            bake_time = int(input("Enter the bake time(min) (if no bake time is used enter 0): "))
+            eggs = int(input("\nEnter the number of Eggs (if no Eggs are used enter 0): \n"))
+            milk = int(input("Enter the amount of Milk(mls) (if no Milk is used enter 0): \n"))
+            butter = int(input("Enter the amount of Butter(g) (if no Butter is used enter 0): \n"))
+            flour = int(input("Enter the amount of Flour(g) (if no Flour is used enter 0): \n"))
+            sugar = int(input("Enter the amount of Sugar(g) (if no Sugar is used enter 0): \n"))
+            chocolate = int(input("Enter the amount of Chocolate(g) (if no Chocolate is used enter 0): \n"))
+            vanilla = int(input("Enter the amount of Vanilla(mls) (if no Vanilla is used enter 0): \n"))
+            bake_time = int(input("Enter the bake time(mins) (if no bake time is used enter 0): \n"))
         except ValueError:
             print("\n -- Invalid input -- I can only accept numbers, please start again\n")
+            time.sleep(5)
+            clear()
             self.add_recipe()
 
         new_key = str(len(self.recipes) + 1 )
@@ -51,7 +55,11 @@ class Recipe:
             "bake time": bake_time}
         
         self.save_recipes()
-        print(f"You have succsessfully added '{name}' to the list of recipes!")
+        clear()
+        print(f"\nYou have succsessfully added '{name}' to the list of recipes!")
+        time.sleep(2)
+        clear()
+        print("Returning to Main Menu...")
 
     def recipe_selection(self):
         self.list_recipes()
