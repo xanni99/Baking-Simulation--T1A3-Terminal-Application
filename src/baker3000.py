@@ -115,7 +115,7 @@ class Machine:
         print(f'*****{self.recipes.recipes[choice]['bake time']} minutes later*****')
         time.sleep(2)
         clear()
-        print(f"Here is your {self.recipes.recipes[choice]['name']}")
+        print(f"Here are your {self.recipes.recipes[choice]['name']}")
         self.display_treat(choice)
         time.sleep(8)
         # Reduce ingredient amounts

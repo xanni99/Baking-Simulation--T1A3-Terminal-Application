@@ -1,6 +1,7 @@
 import json
 from user_interface import clear
 import time
+import random
 
 class Recipe:
     def __init__(self):
@@ -22,6 +23,7 @@ class Recipe:
     def list_recipes(self):
         for key, value in self.recipes.items():
             print(key, value["name"])
+        print("444 Surprise Me")
 
     def add_recipe(self):
         print("Let's add a new recipe!\n")
@@ -65,13 +67,12 @@ class Recipe:
         self.list_recipes()
         try:
             recipe_to_bake = int(input("\nEnter the number of the recipe you would like to bake\n"))
-            # if recipe_to_bake in self.recipes:
+            if recipe_to_bake == 444:
+                recipe_to_bake = random.randint(1,4)
             return recipe_to_bake
-            # else:
-            #     print(f"{recipe_to_bake} is not a valid recipe number\n")
-            #     self.recipe_selection()
         except ValueError:
             print("\n -- Invalid input -- I can only accept numbers, please start again\n")
             self.recipe_selection()
+        
 
 
