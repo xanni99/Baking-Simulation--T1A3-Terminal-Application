@@ -23,7 +23,7 @@ class Recipe:
     def list_recipes(self):
         for key, value in self.recipes.items():
             print(key, value["name"])
-        print("444 Surprise Me")
+        print("444 Random Pick ** Surprise Me **")
 
     def add_recipe(self):
         print("Let's add a new recipe!\n")
@@ -68,10 +68,14 @@ class Recipe:
         try:
             recipe_to_bake = int(input("\nEnter the number of the recipe you would like to bake\n"))
             if recipe_to_bake == 444:
-                recipe_to_bake = random.randint(1,4)
+                recipe_to_bake = random.choice(list(self.recipes.keys()))
+                # recipe_to_bake = random.randint(1,4)
             return recipe_to_bake
         except ValueError:
             print("\n -- Invalid input -- I can only accept numbers, please start again\n")
+            self.recipe_selection()
+        except KeyError:
+            print("\n -- Invalid input -- I can only accept numbers listed, please start again\n")
             self.recipe_selection()
         
 

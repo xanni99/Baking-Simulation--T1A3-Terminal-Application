@@ -17,7 +17,7 @@ class Machine:
             "butter": 600,
             "flour": 600,
             "sugar": 600,
-            "chocolate": 400,
+            "chocolate": 600,
             "vanilla": 100,
             "water": 300,
             "soap": 50,
@@ -38,15 +38,15 @@ class Machine:
     def list_ingredients(self):
         for key, value in self.ingredients.items():
             max_quantity = self.max_quantities.get(key)
-            if value >= 0.55 * max_quantity:
+            if value >= 0.75 * max_quantity:
                 print(f"{Fore.GREEN} {key.capitalize()} - I currently have {value} available")
-            if value >= 0.35 * max_quantity and value <= 0.55 * max_quantity:
+            if value >= 0.55 * max_quantity and value <= 0.75 * max_quantity:
                 print(f"{Fore.YELLOW} {key.capitalize()} -  I currently have {value} available")
             if value >= 0.35 * max_quantity and value <= 0:
                 print(f"{Fore.RED} {key.capitalize()} - I currently have {value} available")
-        print(f"\n{Fore.GREEN} = Enough of ingredient to make ALL recipes - No need to refill")
-        print(f"{Fore.YELLOW} = Enough of ingredient to make AT LEAST 1 recipe - You may need to refill")
-        print(f"{Fore.RED} = Not enough of ingredient to make ANY recipes - You need to refill")
+        print(f"\n{Fore.GREEN} Green = Enough of ingredient to make ALL recipes - No need to refill")
+        print(f"{Fore.YELLOW} Yellow = Enough of ingredient to make AT LEAST 1 recipe - You may need to refill")
+        print(f"{Fore.RED} Red = Not enough of ingredient to make ANY recipes - You need to refill")
 
     def refill_ingredients(self):
         self.list_ingredients()
@@ -63,11 +63,13 @@ class Machine:
                         print("Refilling... Please Wait...")
                         time.sleep(3)
                         clear()
-                        print(f"I now have {self.ingredients.get(ingredient_to_refill)} {ingredient_to_refill.capitalize()}\n")
+                        print(f"I now have {self.ingredients.get(ingredient_to_refill)} units of {ingredient_to_refill.capitalize()}\n")
                         print("Returning to Main Menu...")
                     else:
-                        print(f"I cannot store more than {max_quantity} units of {ingredient_to_refill.capitalize()}\n")
-                        print("Returning to Main Menu...")
+                        print(f"I cannot store more than {max_quantity} units of {ingredient_to_refill.capitalize()}, please try again\n")
+                        time.sleep(2)
+                        clear()
+                        self.refill_ingredients()
                 else:
                     print("Please enter a positive number greater than 0")
                     time.sleep(2)
@@ -100,30 +102,35 @@ class Machine:
             with open("muffin.txt", "r") as f:
                 print(f.read())
         else:
-            print(f"Enjoy your {self.recipes.recipes[choice]['name'].capitalize()}")
+            print("\n")
+        print(f"Enjoy your {self.recipes.recipes[choice]['name'].capitalize()}\n \nReturning to Main Menu in 5 seconds...")
 
     def bake_treat(self, choice):
-        for ingredient, required_amount in self.recipes.recipes[choice].items():
-            if ingredient in ['name', 'bake time']:
-                continue
-            if self.ingredients[ingredient] < required_amount:
-                print(f"I do not have enough {ingredient}. This recipe requires {required_amount} and I currently have {self.ingredients[ingredient]}, please refill this.")
-                return
-        print(f"Baking {self.recipes.recipes[choice]['name'].capitalize()}... Please Wait...")
-        time.sleep(5)
-        clear()
-        print(f'*****{self.recipes.recipes[choice]['bake time']} minutes later*****')
-        time.sleep(2)
-        clear()
-        print(f"Here are your {self.recipes.recipes[choice]['name']}")
-        self.display_treat(choice)
-        time.sleep(8)
-        # Reduce ingredient amounts
-        for ingredient, required_amount in self.recipes.recipes[choice].items():
-            if ingredient in ['name', 'bake time']:
-                continue
-            self.ingredients[ingredient] -= required_amount
-        self.save_ingredients()
+        try:
+            for ingredient, required_amount in self.recipes.recipes[choice].items():
+                if ingredient in ['name', 'bake time']:
+                    continue
+                if self.ingredients[ingredient] < required_amount:
+                    print(f"I do not have enough {ingredient} for {self.recipes.recipes[choice]['name'].capitalize()}. This recipe requires {required_amount} and I currently have {self.ingredients[ingredient]}, please refill this.")
+                    return
+            print(f"Baking {self.recipes.recipes[choice]['name'].capitalize()}... Please Wait...")
+            time.sleep(5)
+            clear()
+            print(f'*****{self.recipes.recipes[choice]['bake time']} minutes later*****')
+            time.sleep(2)
+            clear()
+            print(f"Here are your {self.recipes.recipes[choice]['name']}")
+            self.display_treat(choice)
+            time.sleep(8)
+            # Reduce ingredient amounts
+            for ingredient, required_amount in self.recipes.recipes[choice].items():
+                if ingredient in ['name', 'bake time']:
+                    continue
+                self.ingredients[ingredient] -= required_amount
+            self.save_ingredients()
+        except KeyError:
+            print(f"\n{choice} is not a valid recipe, returning to Main Menu...")
+            time.sleep(2)
 
     def clean_machine(self):
         clear()
