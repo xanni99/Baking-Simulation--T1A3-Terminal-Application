@@ -36,7 +36,7 @@ class Recipe:
             sugar = int(input("Enter the amount of Sugar(g) (if no Sugar is used enter 0): \n"))
             chocolate = int(input("Enter the amount of Chocolate(g) (if no Chocolate is used enter 0): \n"))
             vanilla = int(input("Enter the amount of Vanilla(mls) (if no Vanilla is used enter 0): \n"))
-            bake_time = int(input("Enter the bake time(mins) (if no bake time is used enter 0): \n"))
+            bake_time = int(input("Enter the Bake time(mins) (if no bake time is used enter 0): \n"))
         except ValueError:
             print("\n -- Invalid input -- I can only accept numbers, please start again\n")
             time.sleep(5)

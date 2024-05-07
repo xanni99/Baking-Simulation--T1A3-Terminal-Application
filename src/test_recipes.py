@@ -50,4 +50,43 @@ def test_load_existing_json_file():
         "bake time": 25
     }
 }
-        
+    
+def test_list_recipes(capsys):
+    recipe = Recipe()
+    recipe.list_recipes()
+    captured = capsys.readouterr()
+    assert captured.out == "1 Chocolate Chip Cookies\n2 Vanilla Cupcakes\n3 Brownies\n4 Chocolate Muffins\n444 Random Pick ** Surprise Me **\n"
+    
+
+# def test_add_recipe(monkeypatch, capsys):
+#     user_inputs = iter([
+#         "Test Recipe", # Recipe Name
+#         "2", # Eggs
+#         "250", #Milk
+#         "150", #Butter
+#         "200", #Flour
+#         "250", #Sugar
+#         "0", #Chocolate
+#         "15", #Vanilla
+#         "45", #Bake Time
+#     ])
+#     monkeypatch.setattr('builtins.input', lambda _: next(user_inputs))
+#     recipe = Recipe()
+#     recipe.recipes = {}
+#     recipe.add_recipe()
+#     captured = capsys.readouterr()
+#     assert captured.out == "You have succsessfully added 'Test Recipe' to the list of recipes!\nReturning to Main Menu...\n"
+#     assert recipe.recipes == {
+#         "1": {
+#             "name": "Test Recipe",
+#             "eggs": 2,
+#             "milk": 250,
+#             "butter": 150,
+#             "flour": 200,
+#             "sugar": 250,
+#             "chocolate": 0,
+#             "vanilla": 15,
+#             "bake time": 45
+#         }
+#     }
+
