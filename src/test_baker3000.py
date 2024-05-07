@@ -11,7 +11,7 @@ def test_load_existing_json_file():
     "flour": 600,
     "sugar": 600,
     "chocolate": 600,
-    "vanilla": 10,
+    "vanilla": 100,
     "water": 300,
     "soap": 50
 }

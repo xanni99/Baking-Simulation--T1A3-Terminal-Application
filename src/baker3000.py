@@ -39,14 +39,14 @@ class Machine:
         for key, value in self.ingredients.items():
             max_quantity = self.max_quantities.get(key)
             if value >= 0.75 * max_quantity:
-                print(f"{Fore.GREEN} {key.capitalize()} - I currently have {value} available")
+                print(f"{Fore.GREEN} {key.capitalize()} - I currently have {value} units available")
             if value >= 0.55 * max_quantity and value <= 0.75 * max_quantity:
-                print(f"{Fore.YELLOW} {key.capitalize()} -  I currently have {value} available")
+                print(f"{Fore.YELLOW} {key.capitalize()} -  I currently have {value} units available")
             if value >= 0.35 * max_quantity and value <= 0:
-                print(f"{Fore.RED} {key.capitalize()} - I currently have {value} available")
-        print(f"\n{Fore.GREEN} Green = Enough of ingredient to make ALL recipes - No need to refill")
-        print(f"{Fore.YELLOW} Yellow = Enough of ingredient to make AT LEAST 1 recipe - You may need to refill")
-        print(f"{Fore.RED} Red = Not enough of ingredient to make ANY recipes - You need to refill")
+                print(f"{Fore.RED} {key.capitalize()} - I currently have {value} units available")
+        print(f"\n{Fore.GREEN} Green = Enough of ingredient to be used in ALL recipes - No need to refill")
+        print(f"{Fore.YELLOW} Yellow = Enough of ingredient to be used in AT LEAST 1 recipe - You may need to refill")
+        print(f"{Fore.RED} Red = Not enough of ingredient to be used in ANY recipes - You need to refill")
 
     def refill_ingredients(self):
         self.list_ingredients()
