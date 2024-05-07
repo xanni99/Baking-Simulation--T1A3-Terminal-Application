@@ -81,7 +81,7 @@ class Machine:
                 clear()
                 self.refill_ingredients()
         except ValueError:
-            print("\n -- Invalid input -- I can only accept numbers\n")
+            print("\n -- Invalid input -- I can only accept numbers, please try again\n")
             time.sleep(2)
             clear()
             self.refill_ingredients()
