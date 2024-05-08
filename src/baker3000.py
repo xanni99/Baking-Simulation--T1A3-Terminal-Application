@@ -103,34 +103,30 @@ class Machine:
                 print(f.read())
         else:
             print("\n")
-        print(f"Enjoy your {self.recipes.recipes[choice]['name'].capitalize()}\n \nReturning to Main Menu in 5 seconds...")
+        print(f"Enjoy your {self.recipes.recipes[choice]['name'].capitalize()}\n \nReturning to Main Menu...")
 
     def bake_treat(self, choice):
-        try:
-            for ingredient, required_amount in self.recipes.recipes[choice].items():
-                if ingredient in ['name', 'bake time']:
-                    continue
-                if self.ingredients[ingredient] < required_amount:
-                    print(f"I do not have enough {ingredient} for {self.recipes.recipes[choice]['name'].capitalize()}. This recipe requires {required_amount} and I currently have {self.ingredients[ingredient]}, please refill this.")
-                    return
-            print(f"Baking {self.recipes.recipes[choice]['name'].capitalize()}... Please Wait...")
-            time.sleep(5)
-            clear()
-            print(f'*****{self.recipes.recipes[choice]['bake time']} minutes later*****')
-            time.sleep(2)
-            clear()
-            print(f"Here are your {self.recipes.recipes[choice]['name']}")
-            self.display_treat(choice)
-            time.sleep(8)
-            # Reduce ingredient amounts
-            for ingredient, required_amount in self.recipes.recipes[choice].items():
-                if ingredient in ['name', 'bake time']:
-                    continue
-                self.ingredients[ingredient] -= required_amount
-            self.save_ingredients()
-        except KeyError:
-            print(f"\n{choice} is not a valid recipe, returning to Main Menu...")
-            time.sleep(2)
+        for ingredient, required_amount in self.recipes.recipes[choice].items():
+            if ingredient in ['name', 'bake time']:
+                continue
+            if self.ingredients[ingredient] < required_amount:
+                print(f"I do not have enough {ingredient} for {self.recipes.recipes[choice]['name'].capitalize()}. This recipe requires {required_amount} and I currently have {self.ingredients[ingredient]}, please refill this.")
+                return
+        print(f"Baking {self.recipes.recipes[choice]['name'].capitalize()}... Please Wait...")
+        time.sleep(5)
+        clear()
+        print(f'*****{self.recipes.recipes[choice]['bake time']} minutes later*****')
+        time.sleep(2)
+        clear()
+        print(f"Here are your {self.recipes.recipes[choice]['name']}")
+        self.display_treat(choice)
+        time.sleep(8)
+        # Reduce ingredient amounts
+        for ingredient, required_amount in self.recipes.recipes[choice].items():
+            if ingredient in ['name', 'bake time']:
+                continue
+            self.ingredients[ingredient] -= required_amount
+        self.save_ingredients()
 
     def clean_machine(self):
         clear()
