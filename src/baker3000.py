@@ -20,7 +20,7 @@ class Machine:
             "chocolate": 600,
             "vanilla": 100,
             "water": 300,
-            "soap": 50,
+            "soap": 50
         }
 
     def load_ingredients(self):
@@ -56,7 +56,7 @@ class Machine:
             if max_quantity is not None:
                 current_quantity = self.ingredients.get(ingredient_to_refill)
                 refill_amount = int(input(f"\nHow much/many {ingredient_to_refill.capitalize()} would you like to refill? I currently have {self.ingredients[ingredient_to_refill]} out of {self.max_quantities.get(ingredient_to_refill)}\n"))
-                if refill_amount > 0:
+                if refill_amount >= 0:
                     if current_quantity + refill_amount <= max_quantity:
                         self.ingredients[ingredient_to_refill] += refill_amount
                         clear()
