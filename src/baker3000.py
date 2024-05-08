@@ -40,9 +40,9 @@ class Machine:
             max_quantity = self.max_quantities.get(key)
             if value >= 0.75 * max_quantity:
                 print(f"{Fore.GREEN} {key.capitalize()} - I currently have {value} units available")
-            if value >= 0.55 * max_quantity and value <= 0.75 * max_quantity:
-                print(f"{Fore.YELLOW} {key.capitalize()} -  I currently have {value} units available")
-            if value >= 0.35 * max_quantity and value <= 0:
+            if value >= 0.55 * max_quantity and value < 0.75 * max_quantity:
+                print(f"{Fore.YELLOW} {key.capitalize()} - I currently have {value} units available")
+            if value >= 0 and value < 0.55 * max_quantity:
                 print(f"{Fore.RED} {key.capitalize()} - I currently have {value} units available")
         print(f"\n{Fore.GREEN} Green = Enough of ingredient to be used in ALL recipes - No need to refill")
         print(f"{Fore.YELLOW} Yellow = Enough of ingredient to be used in AT LEAST 1 recipe - You may need to refill")
@@ -144,3 +144,5 @@ class Machine:
         else:
             print("Unable to Clean Machine :(\n")
             print("I do not have enough Water and Soap, please refill these")
+
+
