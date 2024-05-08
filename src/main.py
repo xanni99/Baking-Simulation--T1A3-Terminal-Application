@@ -23,7 +23,6 @@ def main():
                 choice = str(choice_number)
                 ui.clear()
                 baker3000.bake_treat(choice)
-                # baker3000.store_baked_good(choice)
                 time.sleep(6)
             case "2":
                 ui.clear()

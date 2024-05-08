@@ -64,24 +64,21 @@ class Recipe:
         print("Returning to Main Menu...")
 
     def recipe_selection(self):
-        self.list_recipes()
-        try:
-            recipe_to_bake = int(input("\nEnter the number of the recipe you would like to bake\n"))
-            if recipe_to_bake == 444:
-                recipe_to_bake = random.choice(list(self.recipes.keys()))
-            if str(recipe_to_bake) not in (self.recipes.keys()):
-                raise KeyError
-            return recipe_to_bake
-        except ValueError:
-            print("\n -- Invalid input -- I can only accept numbers, please try again\n")
-            time.sleep(2)
-            clear()
-            self.recipe_selection()
-        except KeyError:
-            print(f"\n{recipe_to_bake} is not a valid recipe number, please try again\n")
-            time.sleep(2)
-            clear()
-            self.recipe_selection()
-
-test = Recipe()
-print(test.recipes.keys())
+        while True:
+            self.list_recipes()
+            try:
+                recipe_to_bake = int(input("\nEnter the number of the recipe you would like to bake:\n"))
+                if recipe_to_bake == 444:
+                    recipe_to_bake = random.choice(list(self.recipes.keys()))
+                if str(recipe_to_bake) not in self.recipes.keys():
+                    raise KeyError
+                return recipe_to_bake
+            except ValueError:
+                print("\n -- Invalid input -- I can only accept numbers, please try again\n")
+                time.sleep(2)
+                clear()
+            except KeyError:
+                print(f"\n{recipe_to_bake} is not a valid recipe number, please try again\n")
+                time.sleep(2)
+                clear()
+        

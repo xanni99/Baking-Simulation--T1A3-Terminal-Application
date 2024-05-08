@@ -107,7 +107,7 @@ class Machine:
 
 
     def bake_treat(self, choice):
-        for ingredient, required_amount in self.recipes.recipes[choice].items():
+        for ingredient, required_amount in self.recipes.recipes.items():
             if ingredient in ['name', 'bake time']:
                 continue
             if self.ingredients[ingredient] < required_amount:
