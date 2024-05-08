@@ -1,8 +1,8 @@
+import time
 import json
 import colorama
 from colorama import Fore
 colorama.init(autoreset=True)
-import time
 from recipes import Recipe
 from user_interface import clear
 
@@ -105,6 +105,7 @@ class Machine:
             print("\n")
         print(f"Enjoy your {self.recipes.recipes[choice]['name'].capitalize()}\n \nReturning to Main Menu...")
 
+
     def bake_treat(self, choice):
         for ingredient, required_amount in self.recipes.recipes[choice].items():
             if ingredient in ['name', 'bake time']:
@@ -120,6 +121,9 @@ class Machine:
         clear()
         print(f"Here are your {self.recipes.recipes[choice]['name']}")
         self.display_treat(choice)
+        with open("date_last_accessed.txt", "a") as f:
+            baked_good = str({self.recipes.recipes[choice]['name']})
+            f.write(f"{baked_good},")
         time.sleep(8)
         # Reduce ingredient amounts
         for ingredient, required_amount in self.recipes.recipes[choice].items():
@@ -128,6 +132,7 @@ class Machine:
             self.ingredients[ingredient] -= required_amount
         self.save_ingredients()
 
+    
     def clean_machine(self):
         clear()
         if self.ingredients["water"] >= 100 and self.ingredients["soap"] >= 15:

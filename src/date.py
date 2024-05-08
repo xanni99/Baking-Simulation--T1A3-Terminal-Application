@@ -1,52 +1,52 @@
-import json
+from datetime import datetime, timedelta
+from baker3000 import Machine
 import time
-from datetime import datetime
+from user_interface import clear
 
-def store_completion_info(func_name, completion_time, outcome):
-    try:
-        with open('baked_treats.json', 'r') as file:
-            data = json.load(file)
-    except FileNotFoundError:
-        data = {}
+class Date:
+# Will read the date from the txt file (date the machine was last accessed)
+    def past_accessed_date(self):
+        try:
+            with open("date_last_accessed.txt") as f:
+                past_date = f.read()
+            return past_date
+        except FileNotFoundError as error:
+            print(f"An error has occurred: {str(error)}")
 
-    # Add completion time and outcome for the function
-    data[func_name] = {'completion_time': completion_time.strftime('%Y-%m-%d %H:%M:%S'), 'outcome': outcome}
 
-    # Write data back to JSON file
-    with open('baked_treats.json', 'w') as file:
-        json.dump(data, file, indent=4)
+    # Will save current date into txt file once the machine is turned off
+    def date_today(self):
+        with open("date_last_accessed.txt", "a") as f:
+            current_date = str(datetime.now().date())
+            consume_by_date = current_date + str(timedelta(days= 3))
+            f.write(f"\nThese goods were baked on {current_date} and should be consumed by {consume_by_date}")
+        return current_date
 
-# Modify the bake_treat function to return a status indicating success or failure
-def bake_treat(self, choice):
-    try:
-        for ingredient, required_amount in self.recipes.recipes[choice].items():
-            if ingredient in ['name', 'bake time']:
-                continue
-            if self.ingredients[ingredient] < required_amount:
-                print(f"I do not have enough {ingredient} for {self.recipes.recipes[choice]['name'].capitalize()}. This recipe requires {required_amount} and I currently have {self.ingredients[ingredient]}, please refill this.")
-                return False  # Return False indicating failure
-        print(f"Baking {self.recipes.recipes[choice]['name'].capitalize()}... Please Wait...")
-        time.sleep(5)
-        clear()
-        print(f'*****{self.recipes.recipes[choice]["bake time"]} minutes later*****')
-        time.sleep(2)
-        clear()
-        print(f"Here are your {self.recipes.recipes[choice]['name']}")
-        self.display_treat(choice)
-        time.sleep(8)
-        # Reduce ingredient amounts
-        for ingredient, required_amount in self.recipes.recipes[choice].items():
-            if ingredient in ['name', 'bake time']:
-                continue
-            self.ingredients[ingredient] -= required_amount
-        self.save_ingredients()
-        return True  # Return True indicating success
-    except KeyError:
-        print(f"\n{choice} is not a valid recipe, returning to Main Menu...")
-        time.sleep(2)
-        return False  # Return False indicating failure
 
-# Example usage:
-completion_time = datetime.now()
-outcome = bake_treat(baker3000, "Chocolate_Cake")  # Replace self_instance with your instance of the class
-store_completion_info("bake_treat", completion_time, outcome)
+    # Check if current date and past date are the same
+    def check_date(self, past_date):
+            if str(datetime.now().date()) not in past_date:
+                if Machine().ingredients["water"] >= 100 and Machine().ingredients["soap"] >= 15:
+                    clear()
+                    print("Before we start baking, let's make sure everything is nice and clean!")
+                    time.sleep(3)
+                    Machine().clean_machine()
+                    Machine().ingredients["water"] -= 100
+                    Machine().ingredients["soap"] -= 15
+                    Machine().save_ingredients()
+                else:
+                    clear()
+                    print("I do not have enough soap and water for a clean before we start baking :(...\n")
+                    print("I recommend adding these ingredients and cleaning the machine before baking!")
+                    time.sleep(6)
+            else:
+                pass
+
+    def print_log(self):
+        try:
+            with open("date_last_accessed.txt") as f:
+                print(f.read())
+                time.sleep(10)
+                print("Returning to Main Menu in 3 seconds...")
+        except FileNotFoundError as error:
+            print(f"An error has occurred: {str(error)}")

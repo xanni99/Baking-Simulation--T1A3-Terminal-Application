@@ -17,6 +17,7 @@ def user_menu():
     print("3. Refill Ingredients")
     print("4. Add a Recipe")
     print("5. Clean Machine")
-    print("6. Turn Off")
+    print("6. View Log")
+    print("7. Turn Off")
 
 
