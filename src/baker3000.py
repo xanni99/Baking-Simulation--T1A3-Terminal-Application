@@ -44,9 +44,9 @@ class Machine:
                 print(f"{Fore.YELLOW} {key.capitalize()} - I currently have {value} units available")
             if value >= 0 and value < 0.55 * max_quantity:
                 print(f"{Fore.RED} {key.capitalize()} - I currently have {value} units available")
-        print(f"\n{Fore.GREEN} Green = Enough of ingredient to be used in ALL recipes - No need to refill")
-        print(f"{Fore.YELLOW} Yellow = Enough of ingredient to be used in AT LEAST 1 recipe - You may need to refill")
-        print(f"{Fore.RED} Red = Not enough of ingredient to be used in ANY recipes - You need to refill")
+        print(f"\n{Fore.GREEN} Green ={Fore.RESET} Enough of ingredient to be used in ALL recipes - NO NEED TO REFILL")
+        print(f"{Fore.YELLOW} Yellow ={Fore.RESET} Enough of ingredient to be used in AT LEAST 1 recipe - MAY NEED TO REFILL")
+        print(f"{Fore.RED} Red ={Fore.RESET} Not enough of ingredient to be used in ANY recipes - NEED TO REFILL")
 
     def refill_ingredients(self):
         while True:
@@ -120,7 +120,7 @@ class Machine:
                 print(f.read())
         else:
             print("\n")
-        print(f"Enjoy your {self.recipes.recipes[choice]['name'].capitalize()}\n \nReturning to Main Menu...")
+        print(f"Enjoy your {self.recipes.recipes[choice]['name'].capitalize()}\n \nReturning to Main Menu in 10 seconds...")
 
 
     def bake_treat(self, choice):
@@ -141,7 +141,7 @@ class Machine:
         with open("date_last_accessed.txt", "a") as f:
             baked_good = str({self.recipes.recipes[choice]['name']})
             f.write(f"{baked_good},")
-        time.sleep(8)
+        time.sleep(5)
         # Reduce ingredient amounts
         for ingredient, required_amount in self.recipes.recipes[choice].items():
             if ingredient in ['name', 'bake time']:
