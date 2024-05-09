@@ -3,16 +3,16 @@ from user_interface import clear
 import time
 import random
 
-"""This module contains the class Recipe and contains all of the methods to do with the recipes stored on the machine"""
+"""This module contains the class Recipe """
 
 class Recipe:
-    """Creates an instance of Recipe"""
+    """Creates an instance of Recipe which contains all of the methods to do with the recipes stored on the machine"""
     def __init__(self):
         self.recipes = self.load_recipes()
-        """establishes recipes storeed on the machine"""
+        """Recipies attribute - refers to the recipes stored on the machine"""
 
     def load_recipes(self):
-        """Loads recipes stored on the machine"""
+        """Reads the recipes stored on the machine, which are stored in a JSON file"""
         try:
             with open("stored_recipes.json", "r") as f:
                 recipes = json.load(f)
@@ -21,21 +21,23 @@ class Recipe:
         return recipes
     
     def save_recipes(self):
-        """saves the recipes currently stored in the machine to an external JSON doc"""
+        """Saves/updates the recipes currently stored on the machine to an external JSON file"""
         with open("stored_recipes.json", "w") as f:
             json.dump(self.recipes, f, indent = 4)
 
 
     def list_recipes(self):
-        """Lists all of the recipes stored on the machine"""
+        """Lists all of the recipes stored on the machine, using their recipe key and the name of each recipe"""
         for key, value in self.recipes.items():
             print(key, value["name"])
         #Lists an extra option with special number that indicates random recipe
         print("444 Random Pick ** Surprise Me **")
 
     def add_recipe(self):
-        """Allows the user to add a new recipe to the machine.
-        The user is prompted to enter the name of the recipe, the amount of ingredients required, and the bake time."""
+        """Allows the user to add a new recipe to the machine.\n
+        The user is prompted to enter the name of the recipe, the amount of each ingredient required, and the bake time.\n
+        Calls the save_recipe method to update the list of stored recipes to include this one.
+        """
 
         print("Let's add a new recipe!\n")
         name = input("Enter the name of the recipe: \n")
@@ -81,9 +83,9 @@ class Recipe:
         print("Returning to Main Menu...")
 
     def recipe_selection(self):
-        """Allows the user to select a recipe to bake.
-        Calls list_recipe method so the user can see available recipes
-        Returns the number corresponding to the recipe the user wants to bake"""
+        """Allows the user to select a recipe to bake.\n
+        Calls list_recipe method so the user can see available recipes.\n
+        Returns the number corresponding to the recipe the user wants to bake."""
 
         #Loops until the user enters a valid recipe number
         while True:

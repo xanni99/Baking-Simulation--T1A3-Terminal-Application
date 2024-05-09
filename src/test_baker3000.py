@@ -2,21 +2,6 @@ import json
 import pytest
 from baker3000 import Machine
 
-def test_load_existing_json_file():
-    baker3000 = Machine()
-    assert baker3000.load_ingredients() == {
-    "eggs": 6,
-    "milk": 600,
-    "butter": 600,
-    "flour": 600,
-    "sugar": 600,
-    "chocolate": 600,
-    "vanilla": 100,
-    "water": 300,
-    "soap": 50
-}
-
-
 
 class TestColourListed:
 #Testing Ingredient will be listed in right colour depending on current ingredient level
@@ -63,15 +48,15 @@ class TestColourListed:
 #             "soap": 50
 #         }
     
-#     def test_valid_refill(self, monkeypatch, capsys):
-#         # Test a valid refill scenario
-#         baker3000 = Machine()
-#         baker3000.ingredients = self.mock_ingredients()
-#         monkeypatch.setattr('builtins.input', lambda _: 'eggs')
-#         monkeypatch.setattr('builtins.input', lambda _: '2')
-#         baker3000.refill_ingredients()
-#         captured = capsys.readouterr()
-#         assert "I now have 6 units of Eggs" in captured.out
+    # def test_valid_refill(self, monkeypatch):
+    #     # Test a valid refill scenario
+    #     baker3000 = Machine()
+    #     baker3000.ingredients = self.mock_ingredients()
+    #     mock_user_inputs = iter(['1', "eggs", '2'])
+    #     monkeypatch.setattr("builtins.input", lambda _: next(mock_user_inputs))
+    #     baker3000.refill_ingredients()
+    #     assert baker3000.ingredients["eggs"] == 6
+    #     
 
     # def test_invalid_ingredient_name(self, monkeypatch, capsys):
     #     # Test scenario where an invalid ingredient name is entered

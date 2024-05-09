@@ -19,9 +19,9 @@ class Machine:
         """Creates an instance of the Machine
         """        
         self.recipes = Recipe()
-        """creates an instance of the class Recipe() so that it can access methods relating to the recipes the machine stores """      
+        """Recipe attribute of the machine - it creates an instance of the class Recipe() so that it can access methods relating to the recipes the machine stores """      
         self.ingredients = self.load_ingredients()
-        """establishes ingredients currently stored in the machine from an external JSON doc"""
+        """Ingredient attribute of the machine -refers to ingredients currently stored in the machine, up to date values are stored on an external JSON file"""
         self.max_quantities = {
             "eggs": 6,
             "milk": 600,
@@ -33,10 +33,10 @@ class Machine:
             "water": 300,
             "soap": 50
         }
-        """establishes the maximum quantity of ingredients the machine can store"""
+        """Max quantity attribute of Machine -refers to the maximum quantity of each ingredient the machine can store at once"""
 
     def load_ingredients(self):
-        """loads the ingredients currently stored in the machine from an external JSON doc"""
+        """Reads the ingredient levels currently stored in the machine from an external JSON file"""
         try:
             with open("stored_ingredients.json", "r") as f:
                 ingredients = json.load(f)
@@ -45,12 +45,12 @@ class Machine:
         return ingredients
 
     def save_ingredients(self):
-        """saves the ingredients currently stored in the machine to an external JSON doc"""
+        """Saves the ingredients currently stored in the machine to an external JSON file"""
         with open("stored_ingredients.json", "w") as f:
             json.dump(self.ingredients, f, indent=4)
 
     def list_ingredients(self):
-        """lists the current levels of ingredients stored in the machine and colours them in green, yellow, or red based on % of max quantity """
+        """Lists the ingredients stored in the machine and colours them in green, yellow, or red based on their current levels (current % of max quantity) """
         for key, value in self.ingredients.items():
             max_quantity = self.max_quantities.get(key)
             if value >= 0.75 * max_quantity:
@@ -65,7 +65,11 @@ class Machine:
         print(f"{Fore.RED} Red ={Fore.RESET} Not enough of ingredient to be used in ANY recipes - NEED TO REFILL")
 
     def refill_ingredients(self):
-        """allows the user to refill the ingredients currently stored in the machine"""
+        """Allows the user to refill a chosen ingredient currently stored in the machine.\n
+        Function calls the list_ingredients method so the user can see current ingredient levels before refilling.\n
+        While loop is used so that user can refill multiple ingredients before returning to the main menu.\n
+        User is promted to provide the number of the corresponding ingredient they would like to refill in addition to how much of that ingredient they would like to refill.\n
+        Function calls the save_ingredients method so the new ingredient levels are saved to an external JSON file."""
         #While loop allows user to refill multiple ingredients before returning to main menu
         while True:
             self.list_ingredients()
@@ -133,7 +137,8 @@ class Machine:
         
 
     def display_treat(self,choice):
-        """displays an ASCII representation of the chosen baked good, stored in an external txt file
+        """Reads a text file that contains an ASCII representation of the chosen baked good, stored in an external txt file.\n
+        Displays the ASCII representation of the chosen baked good to the user.\n
 
         Parameters
         ----------
@@ -159,11 +164,11 @@ class Machine:
 
 
     def bake_treat(self, choice):
-        """Uses user input (choice) to 'bake' the chosen baked good. 
-        Involves checking there are enough stored ingredients to make the selected recipe.
-        Calls display_treat function to display the ACII representation of baked good.
-        Stores date that baked good was made on external JSON doc.
-        Saves new ingredient values (reduces ingredients used to bake selected good).
+        """Uses user input (choice) to 'bake' the chosen baked good.\n 
+        Involves checking there are enough stored ingredients to make the selected recipe.\n
+        Calls display_treat function to display the ACII representation of baked good.\n
+        Stores date that baked good was made on external JSON file.\n
+        Saves new ingredient values in JSON file (reduces ingredients used to bake selected good).
 
         Parameters
         ----------
@@ -202,9 +207,9 @@ class Machine:
 
     
     def clean_machine(self):
-        """When called, the machine undergoes a cleaning cycle.
-        The machine is cleaned with soap and water.
-        Soap and Water levels are adjusted accordingly and saved to external JSON doc
+        """When called, the machine undergoes a cleaning cycle.\n
+        The machine is cleaned using ingredients, soap and water.\n
+        Soap and Water levels are adjusted accordingly and saved to external JSON file
         """        
         clear()
         #Check there is enough soap and water

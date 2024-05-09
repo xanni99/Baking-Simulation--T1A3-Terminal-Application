@@ -8,12 +8,12 @@ from user_interface import clear
 class Date:
     """Creates an instance of Date"""
     def past_accessed_date(self):
-        """returns the date the machine was last accessed - information stored in a JSON doc
+        """Returns the date the machine was last accessed - information stored in a JSON file
 
         Returns
         -------
         str
-            returns a string including the date the machine was last accessed
+            returns a string that includes the date the machine was last accessed
         """        
         try:
             with open("date_last_accessed.txt") as f:
@@ -23,12 +23,12 @@ class Date:
             print(f"An error has occurred: {str(error)}")
 
     def date_today(self):
-        """stores the date today (day that machine is currently being accessed) in an external JSON doc
+        """Stores the date today (day that machine is currently being accessed) in an external JSON file.
 
         Returns
         -------
         str 
-            Adds current date and date in 3 days time (date that any goods baked today should be consumed by) to JSON doc.
+            Adds current date, and date in 3 days time (date that any goods baked today should be consumed by) to JSON file.\n
             Returns a string representing the date today
         """
 
@@ -39,9 +39,9 @@ class Date:
         return current_date
 
     def check_date(self, past_date):
-            """Checks if the current date is in the JSON doc.
-            If the current date is not in the JSON doc (meaning the machine has not been used today), the machine is cleaned.
-            If there are not enough ingredients (soap and water) for the machine to be cleaned, this step is skipped an a recommendation message is displayed instead.
+            """Checks if the current date is in the JSON file.\n
+            If the current date is not in the JSON file (meaning the machine has not been used today), the clean_machine function is called (machine is cleaned before use).\n
+            If there are not enough ingredients (soap and water) for the machine to be cleaned, this step is skipped an a recommendation message to clean machine is displayed instead.
             """
             if str(datetime.now().date()) not in past_date:
                 #Check enough ingredients to clean machine
