@@ -1,6 +1,6 @@
 import os
 
-    """This module contains various functions that relate to the user interface of the machine"""
+"""This module contains various functions that relate to the user interface of the machine"""
 
 def clear():
     """Clears the terminal screen"""
