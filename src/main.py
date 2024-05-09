@@ -13,6 +13,7 @@ def main():
     date = Date()
     past_date = date.past_accessed_date()
     date.check_date(past_date)
+    date.date_today()
     while True:
         ui.user_menu()
         user_action = input("\n:")
@@ -27,9 +28,9 @@ def main():
             case "2":
                 ui.clear()
                 baker3000.list_ingredients()
+                print
+                print("\nReturning to Main Menu in 10 seconds...")
                 time.sleep(12)
-                print("\nReturning to Main Menu in 3 seconds...")
-                time.sleep(3)
             case "3":
                 ui.clear()
                 baker3000.refill_ingredients()
@@ -47,7 +48,6 @@ def main():
                 time.sleep(3)
             case "7":
                 ui.clear()
-                date.date_today()
                 ui.goodbye_message()
                 time.sleep(4)
                 ui.clear()

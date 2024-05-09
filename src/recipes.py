@@ -58,8 +58,9 @@ class Recipe:
         
         self.save_recipes()
         clear()
-        print(f"\nYou have succsessfully added '{name}' to the list of recipes!")
-        time.sleep(2)
+        print(f"\nYou have sucsessfully added '{name}' to the list of recipes!")
+        print("\nPlease turn the machine on and off again before baking this recipe!")
+        time.sleep(5)
         clear()
         print("Returning to Main Menu...")
 
@@ -82,3 +83,5 @@ class Recipe:
                 time.sleep(2)
                 clear()
         
+test = Recipe()
+print(test.recipes.keys())
