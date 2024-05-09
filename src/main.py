@@ -74,7 +74,7 @@ def main():
                 break
             #User enters invalid input
             case _:
-                print(f"\n Sorry, {user_action} is not a valid option. I can only accept 1, 2, 3, 4, 5 or 6\n")
+                print(f"\n Sorry, {user_action} is not a valid option. I can only accept 1, 2, 3, 4, 5, 6 or 7\n")
                 time.sleep(4)
         
 

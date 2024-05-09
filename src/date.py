@@ -35,7 +35,7 @@ class Date:
         with open("date_last_accessed.txt", "a") as f:
             current_date = str(datetime.now().date())
             consume_by_date = current_date + str(timedelta(days= 3))
-            f.write(f"\nThese goods were baked on {current_date} and should be consumed by {consume_by_date}")
+            f.write(f"\nThese goods were baked on {current_date} and should be consumed by {consume_by_date}:")
         return current_date
 
     def check_date(self, past_date):

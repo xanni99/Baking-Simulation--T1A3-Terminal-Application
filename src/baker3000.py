@@ -191,7 +191,7 @@ class Machine:
         #Stores date that baked good was made on external JSON doc
         with open("date_last_accessed.txt", "a") as f:
             baked_good = str({self.recipes.recipes[choice]['name']})
-            f.write(f"{baked_good},")
+            f.write(f"\n{baked_good},")
         time.sleep(5)
          # Reduce ingredient amounts
         for ingredient, required_amount in self.recipes.recipes[choice].items():
