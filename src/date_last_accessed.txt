@@ -1,0 +1,5 @@
+
+These goods were baked on 2024-05-10 and should be consumed by 2024-05-103 days, 0:00:00:
+{'Chocolate Chip Cookies'},
+{'Chocolate Muffins'},
+{'Brownies'},
