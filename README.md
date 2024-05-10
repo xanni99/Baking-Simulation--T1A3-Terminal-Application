@@ -76,25 +76,52 @@ Additionally, it can be seen that 2 for loops had to be used. The first for loop
 
 The third feature within the Baker3000 baking simulation, is the basic ability to view the current supply levels of the machine. Ultimately, this allows the user to guage what recipes they can and can't make and make the decision to refill ingredients if required. When the user selects this feature by inputting '2', they are presented with the following screen:
 
-![](docs/list_ingredients.png)
+![Screenshot of user terminal after selecting list_ingredients](docs/list_ingredients.png)
 
 As can be seen in the image above, the ingredients the machine stores are listed and state the current level of that ingredient. In addition to this, they are colour coded depending on how much of the ingredient they have available (as a % of the maximum amount the machine can store). A key is provided that explains if the ingredient is coloured green, there is enough of that ingredient to make ANY of the stored recipes, and the user will not have to refill that ingredient before baking something. Yellow and red are also defined (as seen in picture above). 
 
 In order to colour the ingredients based on their current levels, a for loop had to be used. 
 
-![](docs/list_ingredients_code.png)
+![Screenshot of code for list_ingredients function](docs/list_ingredients_code.png)
 
-As it can be seen in the code above, a for loop was used to evaluate the current level of each ingredient against the machine's maximum capacity for that ingredient. 
+As it can be seen in the code above, a for loop was used to evaluate the current level of each ingredient against the machine's maximum capacity for that ingredient.
 
 ### 4. Refill Ingredients
+
+The fourth feature within the Baker3000 baking simulation is the ability to refill ingredients. In order to make the simulation more realistic, up-to-date ingredient levels of the machine are stored on a JSON file. Ultimately this allows the simulation to actually represent a machine baking something.
+
+When the user input == '3' (from the main menu) the user is presented with the following screen.
+
+![screenshot of user terminal after selecting refill ingredients](docs/refill_ingredients.png)
+
+As you can see from the image above, the user is again presented with the list of ingredients and their current values (colour-coded to represent ability to make a recipe), in addition to an option to either refill ingredients or return to the main menu.
+
+If the user selects to refill an ingredient, they are asked which ingredient they would like to refill and if this is a valid ingredient, how much/many units they would like to add.
+
+This is represented by the following code:
+
+![First part of code for refill_ingredients method](docs/refill_ingredients_code_1.png)
+![Second part of code for refill_ingredients method](docs/refill_ingredients_code_2.png)
+
+As you can see from the code above, this method uses a while loop in order to allow the user the option of refilling ingredients, or returning to main menu. By utilising a while loop here, this allows the user to potentially refill multiple ingredients before having to return to the main menu or go back to the main menu without filling any ingredients.
+
+In order to refill an ingredient, and ensure it is valid, 3 if statements were used.
+
+1. The first if statement ensures that the ingredient the user entered is a valid ingredient that the machine store. In addition to this, even if the user enters the ingredient in all caps, or no caps, the ingredient is accepted as the input is assigned using the .lower() function.
+2. The second if statement is used to determine that the user is actually refilling the machine (entering a positive integer) and not reducing the levels of the ingredient. As a result the refill amount has to be greater than or equal to 0 in order to proceed.
+3. The last if statement ensures that the user does not overfill the machine. It checks that the amount the user wants to refill + the current level of the ingredient stored in the machine, will not exceed it's maximum capacity.
+
+If any of the if statements are not passed, a corresponding error message is returned and prompts the user to try again by re-calling the refill_ingredients method.
+
+Once the user refills the selected ingredient, the JSON file that stores these levels is updated accordingly.
 
 ### 5. Add a Recipe
 
 ### 6. Clean Machine
 
-The 6th feature of the Baker3000 baking simulation is the ability to clean the machine. When the user input == '5', immediately runs a cleaning cycle (if there are enough ingredients). This is created using a imple if else statement. 
+The 6th feature of the Baker3000 baking simulation is the ability to clean the machine. When the user input == '5', immediately runs a cleaning cycle (if there are enough ingredients). This is created using a imple if else statement.
 
-![](docs/clean_machine_code.png)
+![Screenshot of code for clean_machine method](docs/clean_machine_code.png)
 
 As you can see from the code above, the method checks that the machine's current levels of soap and water are equal to or more than the levels required for the cleaning cycle. If there are enough ingredients, the cleaning cycle is run and the machien's levels of soap and water are reduced accordingly in order to represent this.
 
