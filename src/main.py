@@ -13,67 +13,51 @@ def main():
     ui.clear()
     ui.welcome_message()
     time.sleep(3)
-    #Estabilish instances
     baker3000 = Machine()
     recipes = Recipe()
-    date = Date()
-    #Check if machine has been used today
-    past_date = date.past_accessed_date()
-    #If machine has not been used today, clean machine
-    date.check_date(past_date)
-    #Stores todays date in JSON file
+    date = Date() #Check if machine has been used today
+    past_date = date.past_accessed_date() #If machine has not been used today, clean machine
+    date.check_date(past_date) #Stores todays date in JSON file
     date.date_today()
-    #Main menu loop
-    while True:
-        #Displays Main Menu to user
+    while True: #Main menu loop
         ui.user_menu()
-        #Takes user input 
         user_action = input("\n:")
-        #Matches user input with feature of Baker3000 Simulation
         match user_action:
-            #User selects 'Bake a Treat'
-            case "1":
+            case "1": #User selects 'Bake a Treat'
                 ui.clear()
                 choice_number = recipes.recipe_selection()
                 choice = str(choice_number)
                 ui.clear()
                 baker3000.bake_treat(choice)
                 time.sleep(6)
-            #User selects 'View Supply Levels'
-            case "2":
+            case "2": #User selects 'View Supply Levels'
                 ui.clear()
                 baker3000.list_ingredients()
                 print
                 print("\nReturning to Main Menu in 10 seconds...")
                 time.sleep(12)
-            #User selects 'Refill Ingredients'
-            case "3":
+            case "3": #User selects 'Refill Ingredients'
                 ui.clear()
                 baker3000.refill_ingredients()
                 time.sleep(3)
-            #User selects 'Add a Recipe'
-            case "4":
+            case "4": #User selects 'Add a Recipe'
                 ui.clear()
                 recipes.add_recipe()
                 time.sleep(3)
-            #User selects 'Clean Machine'
-            case "5":
+            case "5": #User selects 'Clean Machine'
                 baker3000.clean_machine()
                 time.sleep(3)
-            #User selects 'View Baking Log'
-            case "6":
+            case "6": #User selects 'View Baking Log'
                 ui.clear()
                 date.print_log()
                 time.sleep(3)
-            #User selects 'Turn Off'
-            case "7":
+            case "7": #User selects 'Turn Off'
                 ui.clear()
                 ui.goodbye_message()
                 time.sleep(4)
                 ui.clear()
                 break
-            #User enters invalid input
-            case _:
+            case _: #User enters invalid input
                 print(f"\n Sorry, {user_action} is not a valid option. I can only accept 1, 2, 3, 4, 5, 6 or 7\n")
                 time.sleep(4)
         

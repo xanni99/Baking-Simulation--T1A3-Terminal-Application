@@ -21,9 +21,13 @@ Ensure that the features allow you to demonstrate your understanding of the foll
 
 My terminal application, labeled Baker3000, is a baking simulation that runs as a machine that ultimately allows the user to bake themselves a tasty lil treat. In order to do this, the simulation includes 6 features (+ the ability to exit the simulation/turn off the machine) that can be accessed from a main interface. I will describe these features in more detail below.
 
-### 1. Main Interface
+### 1. Main Menu
 
-Firstly, the main interface is what the user will use to navigate the machine. After recieving the welcome message, this is where the user lands. 
+The first feature of the application is the 'Main Menu'. The main menu is what the user will use to navigate the other features of the machine. After recieving the welcome message, this is where the user lands.
+
+![](docs/main_menu.png)
+
+As you can see from the image above, the main menu displays a message asking the user what they would like to do and to please select a number from the list of features that are available to them. In order 
 
 ### 2. Bake a Treat
 
