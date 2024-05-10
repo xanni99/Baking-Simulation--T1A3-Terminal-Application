@@ -163,13 +163,10 @@ class Machine:
         ----------
         choice : str
             The number that corresponds to the baked good the user wants to bake - retrieved from main
-        """     
-        #Gathers all ingredient amounts needed for chosen recipe  
+        """
         for ingredient, required_amount in self.recipes.recipes[choice].items():
-            #Skips keys 'name' and 'bake' as these are not ingredient values
             if ingredient in ['name', 'bake time']:
                 continue
-            #Ensures user has enough of ingredient to bake selected recipe
             if self.ingredients[ingredient] < required_amount:
                 print(f"I do not have enough {ingredient} for {self.recipes.recipes[choice]['name'].capitalize()}. This recipe requires {required_amount} and I currently have {self.ingredients[ingredient]}, please refill this.")
                 return
@@ -180,15 +177,12 @@ class Machine:
         time.sleep(2)
         clear()
         print(f"Here are your {self.recipes.recipes[choice]['name']}")
-        #display ASCII image of baked good
-        self.display_treat(choice)
-        #Stores date that baked good was made on external JSON doc
-        with open("date_last_accessed.txt", "a") as f:
-            baked_good = str({self.recipes.recipes[choice]['name']})
+        self.display_treat(choice) #display ASCII image of baked good
+        with open("date_last_accessed.txt", "a") as f: #Stores date that baked good was made on external JSON doc
+            baked_good = str(self.recipes.recipes[choice]['name'])
             f.write(f"\n{baked_good},")
         time.sleep(5)
-         # Reduce ingredient amounts
-        for ingredient, required_amount in self.recipes.recipes[choice].items():
+        for ingredient, required_amount in self.recipes.recipes[choice].items(): # Reduce ingredient amounts
             if ingredient in ['name', 'bake time']:
                 continue
             self.ingredients[ingredient] -= required_amount
@@ -199,7 +193,7 @@ class Machine:
         """When called, the machine undergoes a cleaning cycle.\n
         The machine is cleaned using ingredients, soap and water.\n
         Soap and Water levels are adjusted accordingly and saved to external JSON file
-        """        
+        """      
         clear()
         #Check there is enough soap and water
         if self.ingredients["water"] >= 100 and self.ingredients["soap"] >= 15:

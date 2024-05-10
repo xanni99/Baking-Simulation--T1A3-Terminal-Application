@@ -129,6 +129,15 @@ If there are not enough ingredients, an error message occurs, stating that there
 
 ### 7. View Baking Log
 
+The 7th and final feature of the Baker3000 baking simulation is the ability to View a Baking Log. When the user selects this feature they are taken straight to the log, that may look something like the following, depending on what they have baked.
+
+![Screenshot of user terminal after calling baking_log method](docs/baking_log.png)
+
+In order for this feature to work, 2 main functions/steps had to be implemented. Firstly, whenever the machine was accessed, the current date had to be recorded, and secondly, the name of each baked good made after using the 'Bake a Treat' feature had to be added under this date. 
+
+In order to do this, the following code was implemented.
+
+
 ## Implementation Plan
 
 ## Help Documentation
