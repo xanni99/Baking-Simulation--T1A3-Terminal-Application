@@ -137,6 +137,13 @@ In order for this feature to work, 2 main functions/steps had to be implemented.
 
 In order to do this, the following code was implemented.
 
+![Screenshot of code for print_log method](docs/print_log_code.png)
+
+As you can see from the code above firstly there had to be an external file that held a list of the previous access dates. The first step (recording the current date whenever the machine is accessed) occurs from main interface and is called as soon as the program is run. The code that implements this is found below.
+
+![screenshot of code for date_today function](docs/date_today_code.png)
+
+The second step (recording each baked good that is made) occurs directly after each baked good is made and can be found in the code for 'Bake a treat'.
 
 ## Implementation Plan
 
