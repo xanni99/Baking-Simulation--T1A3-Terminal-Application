@@ -117,7 +117,20 @@ Once the user refills the selected ingredient, the JSON file that stores these l
 
 ### 5. Add a Recipe
 
-The 5th feature of the Baker3000 baking simulation, is the ability for the user to add their own recipe (that contains the machine's stored ingredients). 
+The 5th feature of the Baker3000 baking simulation, is the ability for the user to add their own recipe (that contains the machine's stored ingredients). After selecting 4 from the main menu, this is an example user terminal screen if they were to be adding a recipe for 'Doughnuts'.
+
+![Screenshot of user terminal after selecting to 'Add a recipe' and putting in information for 'Doughnuts'](docs/add_recipe.png)
+
+In order to add a recipe, the user needs to provide all of the information to 'Bake a Treat', which includes the recipe name, ingredient levels and the bake time. This information then needs to be loaded to the JSON file that stores the machine's recipe information.
+
+These steps are represented by the following code:
+
+![code for add_recipe() method](docs/add_recipe_code.png)
+![code for add_recipe() method part 2](docs/add_recipe_code_2.png)
+
+As you can see from the code above, this method requires a lot of user input. The ingredient values need to be integers in order for the other functions to work correctly. As a result, if the user trys to add a string for any of the ingredient values, a ValueError occurs and the user is prompted to start again.
+
+It can also be seen that in order for the recipe values to be added to the stored JSON file, a new recipe key has to be created that is one more than the last recipe key. After this is created, the recipe can be added to the file and stored for future use.
 
 ### 6. Clean Machine
 
