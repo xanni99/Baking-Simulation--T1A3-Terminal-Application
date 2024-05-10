@@ -41,10 +41,21 @@ The second feature in the Baker3000 baking simulation is the of course, the abil
 
 ![](docs/bake_treat_1.png)
 
-As you can see, the user is provided a list of the current available recipes that are stored on the machine. This list gets updated if the user adds a new recipe (feature will be described below). The user is then promted to provide the **number** of the recipe that they would like to bake. This occurs when the main menu calls the recipe_selection function
+This is displayed by the following code.
 
+![](docs/recipe_selection_code.png)
 
-In order to bake the user a treat, the following steps occur:
+As you can see from the code above, this method uses a while loop in order to get a valid user input. Firstly, it lists the available recipes with the list_recipes() method so the user can see the available recipes (this gets updated when new recipes are added). The user is then promted to input the **number** of the recipe they would like to bake. 
+
+As you can see from the code, there are 2 'if' statements used within this method. Firstly, if the user input == '444' (as they have selected for the 'Random Pick' option) then the value of the user input will be overidden to a random selection of the other available numbers (meaning it will pick a random recipe for them). 
+
+The second if statement is used to ensure the user input actually corresponds to an available recipe. If the user input does not match a number of the available recipes, a KeyError is raised.
+
+This method requires the user's input to be an integer, and as a result if the user inputs a string, a ValueError occurs, and a corresponding input error is given to the user.
+
+Once valid input has been entered, it returns the value of 'recipe_to_bake' which is ultimately given as the value of 'choice', which can be seen on the main menu loop.
+
+In order to 'bake' the user a treat, the following steps occur:
 
 1. The ingredient amounts required to make the chosen recipe have to be returned
 2. It needs to be checked that there are enough ingredients currently stored in the machine in order to make the recipe
@@ -56,14 +67,24 @@ These steps can be observed in the following code.
 
 **INSERT BAKE_TREAT CODE HERE**
 
-As you can see from the code above, this function accepts 'choice'. Choice refers to the user's selection of which baked treat they would like to bake. 
+As you can see from the code above, this function accepts 'choice'. Choice refers to the user's selection of which baked treat they would like to bake (collected earlier by the recipe_selection method).
 
-2 for loops had to be used. The first for loop is used in order to retreive the individual ingredient levels required for the chosen recipe. It can also be seen that within this loop the keys 'name' and 'bake time' were excluded from the loop as these are not ingredients and are not required in this part of the function. The second time the for loop is used is to reduce the amount of ingredients required by the recipe from the machine itself, in order to accurately represent the baked good being made. 
+Additionally, it can be seen that 2 for loops had to be used. The first for loop is used in order to retreive the individual ingredient levels required for the chosen recipe. It can also be seen that within this loop the keys 'name' and 'bake time' were excluded from the loop as these are not ingredients and are not required in this part of the function. The second time the for loop is used is to reduce the amount of ingredients required by the recipe from the machine itself, in order to accurately represent the baked good being made. 
 
 
 ### 3. View Supply Levels
 
-The third feature within the Baker3000 baking simulation, is the basic ability to view the current supply levels of the machine. Ultimately, this allows the user to guage what recipes they can and can't make and make the decision to refill ingredients if required. When the user selects this feature by inputting '......................
+The third feature within the Baker3000 baking simulation, is the basic ability to view the current supply levels of the machine. Ultimately, this allows the user to guage what recipes they can and can't make and make the decision to refill ingredients if required. When the user selects this feature by inputting '2', they are presented with the following screen:
+
+![](docs/list_ingredients.png)
+
+As can be seen in the image above, the ingredients the machine stores are listed and state the current level of that ingredient. In addition to this, they are colour coded depending on how much of the ingredient they have available (as a % of the maximum amount the machine can store). A key is provided that explains if the ingredient is coloured green, there is enough of that ingredient to make ANY of the stored recipes, and the user will not have to refill that ingredient before baking something. Yellow and red are also defined (as seen in picture above). 
+
+In order to colour the ingredients based on their current levels, a for loop had to be used. 
+
+![](docs/list_ingredients_code.png)
+
+As it can be seen in the code above, a for loop was used to evaluate the current level of each ingredient against the machine's maximum capacity for that ingredient. 
 
 ### 4. Refill Ingredients
 
