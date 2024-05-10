@@ -117,6 +117,8 @@ Once the user refills the selected ingredient, the JSON file that stores these l
 
 ### 5. Add a Recipe
 
+The 5th feature of the Baker3000 baking simulation, is the ability for the user to add their own recipe (that contains the machine's stored ingredients). 
+
 ### 6. Clean Machine
 
 The 6th feature of the Baker3000 baking simulation is the ability to clean the machine. When the user input == '5', immediately runs a cleaning cycle (if there are enough ingredients). This is created using a imple if else statement.

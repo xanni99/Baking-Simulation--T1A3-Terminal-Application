@@ -30,7 +30,6 @@ class Recipe:
         """Lists all of the recipes stored on the machine, using their recipe key and the name of each recipe"""
         for key, value in self.recipes.items():
             print(key, value["name"])
-        #Lists an extra option with special number that indicates random recipe
         print("444 Random Pick ** Surprise Me **")
 
     def add_recipe(self):
@@ -41,7 +40,6 @@ class Recipe:
 
         print("Let's add a new recipe!\n")
         name = input("Enter the name of the recipe: \n")
-        #Gather inputs corresponding to ingredient amounts (only accepts integers)
         try:
             eggs = int(input("\nEnter the number of Eggs (if no Eggs are used enter 0): \n"))
             milk = int(input("Enter the amount of Milk(mls) (if no Milk is used enter 0): \n"))
@@ -51,17 +49,12 @@ class Recipe:
             chocolate = int(input("Enter the amount of Chocolate(g) (if no Chocolate is used enter 0): \n"))
             vanilla = int(input("Enter the amount of Vanilla(mls) (if no Vanilla is used enter 0): \n"))
             bake_time = int(input("Enter the Bake time(mins) (if no bake time is used enter 0): \n"))
-        #Values entered should only be integers
         except ValueError:
             print("\n -- Invalid input -- I can only accept numbers, please start again\n")
             time.sleep(5)
             clear()
             self.add_recipe()
-
-        #Creates new recipe number which is 1 higher than the latest stored recipe
         new_key = str(len(self.recipes) + 1 )
-
-        #Adds key names and values for new recipe
         self.recipes[new_key] = {
             "name": name,
             "eggs": eggs,
@@ -72,8 +65,6 @@ class Recipe:
             "chocolate": chocolate, 
             "vanilla": vanilla, 
             "bake time": bake_time}
-        
-        #Saves new recipe into external JSON doc so it can be used in future
         self.save_recipes()
         clear()
         print(f"\nYou have sucsessfully added '{name}' to the list of recipes!")
@@ -87,7 +78,7 @@ class Recipe:
         Calls list_recipe method so the user can see available recipes.\n
         Returns the number corresponding to the recipe the user wants to bake.
         """
-        
+
         while True:
             self.list_recipes()
             try:
