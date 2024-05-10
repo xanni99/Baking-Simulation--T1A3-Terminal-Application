@@ -6,9 +6,7 @@ colorama.init(autoreset=True)
 from recipes import Recipe
 from user_interface import clear
 
-"""
-This module contains the class Machine for the baking simulation.
- """
+"""This module contains the class Machine for the baking simulation."""
 
       
 class Machine:
@@ -16,8 +14,7 @@ class Machine:
     """
 
     def __init__(self):
-        """Creates an instance of the Machine
-        """        
+        """Creates an instance of the Machine"""        
         self.recipes = Recipe()
         """Recipe attribute of the machine - it creates an instance of the class Recipe() so that it can access methods relating to the recipes the machine stores """      
         self.ingredients = self.load_ingredients()
@@ -69,32 +66,26 @@ class Machine:
         Function calls the list_ingredients method so the user can see current ingredient levels before refilling.\n
         While loop is used so that user can refill multiple ingredients before returning to the main menu.\n
         User is promted to provide the number of the corresponding ingredient they would like to refill in addition to how much of that ingredient they would like to refill.\n
-        Function calls the save_ingredients method so the new ingredient levels are saved to an external JSON file."""
-        #While loop allows user to refill multiple ingredients before returning to main menu
+        Function calls the save_ingredients method so the new ingredient levels are saved to an external JSON file.
+        """
         while True:
             self.list_ingredients()
             print("\nWhat would you like to do?")
             print("\n[1] Refill ingredient")
             print("[2] Return to Main Menu")
             decision = input("\nEnter the number of your choice: ")
-            #User chose to refill ingredient
             if decision == '1':
                 clear()
                 self.list_ingredients()
                 try:
                     ingredient_to_refill = input("\nPlease enter the name of the ingredient you would like to refill\n").lower()
-                    #Retreiving the max quantity of the ingredient the user chose to refill
-                    max_quantity = self.max_quantities.get(ingredient_to_refill)
+                    max_quantity = self.max_quantities.get(ingredient_to_refill) 
                     clear()
-                    #Checking if the ingredient the user chose to refill is a valid ingredient
                     if max_quantity is not None:
                         current_quantity = self.ingredients.get(ingredient_to_refill)
                         refill_amount = int(input(f"\nHow much/many {ingredient_to_refill.capitalize()} would you like to refill? I currently have {self.ingredients[ingredient_to_refill]} out of {self.max_quantities.get(ingredient_to_refill)}\n"))
-                        #Will only refill positive quantity
                         if refill_amount >= 0:
-                            #Ensuring user does not overfill ingredient above maximum capacity
                             if current_quantity + refill_amount <= max_quantity:
-                                #Adjusting new ingredient levels
                                 self.ingredients[ingredient_to_refill] += refill_amount
                                 clear()
                                 print("Refilling... Please Wait...")
@@ -123,7 +114,6 @@ class Machine:
                     time.sleep(2)
                     clear()
                     self.refill_ingredients()
-            #User chose to return to main menu
             elif decision == '2':
                 clear()
                 print("Returning to Main Menu...")
@@ -132,7 +122,6 @@ class Machine:
                 print("\n -- Invalid input -- Please enter either '1' or '2'\n")
                 time.sleep(2)
                 clear()
-        #Saves new ingredient level to external JSON doc
         self.save_ingredients()
         
 

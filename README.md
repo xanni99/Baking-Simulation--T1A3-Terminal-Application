@@ -27,9 +27,17 @@ The first feature of the application is the 'Main Menu'. The main menu is what t
 
 ![](docs/main_menu.png)
 
-As you can see from the image above, the main menu displays a message asking the user what they would like to do and to please select a number from the list of features that are available to them. In order 
+As you can see from the image above, the main menu displays a message asking the user what they would like to do and to please select a number from the list of features that are available to them. 
+
+In order to make this function like a main menu, something that the user can keep coming back to, I used a while loop with a nested match statement that uses the user's input to select the feature they would like to access. See the code below.
+
+![](docs/main_menu_code.png)
+
+After taking, user input as user_action, the match statement will match the user's input with the feature they have selected. Once each feature is run, the user will return back to the main menu (in the while loop) and will be promted to give another input. This will continue until the user_input == '7', in which case the loop will be broken (through the use of a 'break' statement ) and the simulation will end. In the case that the user enters invalid input (a string or an integer not in the match statement), an error message will occur asking the user to enter a valid input.
 
 ### 2. Bake a Treat
+
+The second feature in the Baker3000 baking simulation is the of course, the ability to bake a treat. 
 
 ### 3. View Supply Levels
 
