@@ -85,9 +85,9 @@ class Recipe:
     def recipe_selection(self):
         """Allows the user to select a recipe to bake.\n
         Calls list_recipe method so the user can see available recipes.\n
-        Returns the number corresponding to the recipe the user wants to bake."""
-
-        #Loops until the user enters a valid recipe number
+        Returns the number corresponding to the recipe the user wants to bake.
+        """
+        
         while True:
             self.list_recipes()
             try:
