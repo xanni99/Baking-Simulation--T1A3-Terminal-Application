@@ -65,7 +65,7 @@ In order to 'bake' the user a treat, the following steps occur:
 
 These steps can be observed in the following code.
 
-**INSERT BAKE_TREAT CODE HERE**
+**INSERT BAKE_TREAT CODE HERE***********************
 
 As you can see from the code above, this function accepts 'choice'. Choice refers to the user's selection of which baked treat they would like to bake (collected earlier by the recipe_selection method).
 
@@ -92,9 +92,15 @@ As it can be seen in the code above, a for loop was used to evaluate the current
 
 ### 6. Clean Machine
 
-### 7. View Baking Log
+The 6th feature of the Baker3000 baking simulation is the ability to clean the machine. When the user input == '5', immediately runs a cleaning cycle (if there are enough ingredients). This is created using a imple if else statement. 
 
-### 8. Turn Off
+![](docs/clean_machine_code.png)
+
+As you can see from the code above, the method checks that the machine's current levels of soap and water are equal to or more than the levels required for the cleaning cycle. If there are enough ingredients, the cleaning cycle is run and the machien's levels of soap and water are reduced accordingly in order to represent this.
+
+If there are not enough ingredients, an error message occurs, stating that there is not enough soap and water to clean the machine and the user will have to refill these.
+
+### 7. View Baking Log
 
 ## Implementation Plan
 

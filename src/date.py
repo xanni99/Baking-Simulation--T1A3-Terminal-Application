@@ -44,7 +44,6 @@ class Date:
             If there are not enough ingredients (soap and water) for the machine to be cleaned, this step is skipped an a recommendation message to clean machine is displayed instead.
             """
             if str(datetime.now().date()) not in past_date:
-                #Check enough ingredients to clean machine
                 if Machine().ingredients["water"] >= 100 and Machine().ingredients["soap"] >= 15:
                     clear()
                     print("Before we start baking, let's make sure everything is nice and clean!")
@@ -53,7 +52,6 @@ class Date:
                     Machine().ingredients["water"] -= 100
                     Machine().ingredients["soap"] -= 15
                     Machine().save_ingredients()
-                #If not enough ingredients to clean machine, recommendation message displayed instead
                 else:
                     clear()
                     print("I do not have enough soap and water for a clean before we start baking :(...\n")
