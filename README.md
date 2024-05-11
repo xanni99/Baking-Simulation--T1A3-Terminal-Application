@@ -180,9 +180,20 @@ The second list on the Trello Board was labelled 'Create Application' had cards 
 
 ## Help Documentation
 
-ACCURATELY describe: steps to install the application; dependencies required by the application; system/hardware requirements; features of the application.
+### Steps to Install Application
 
-Writes multiple highly sophisticated scripts which facilitate the execution of the application.
+### Dependencies Required
+
+### System/ Hardware Requirements
+
+### Features of Baker3000
+
+The features of the Baker3000 Simulation are outlined in the following Pydoc documents.
+
+![Methods of class Machine](docs/pydoc1.png)
+![Methods of class Date](docs/pydoc2.png)
+![Methods of class Recipes](docs/pydoc3.png)
+![Functions for user_interface](docs/pydoc4.png)
 
 ## References
 
