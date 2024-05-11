@@ -5,13 +5,9 @@ from colorama import Fore
 colorama.init(autoreset=True)
 from recipes import Recipe
 from user_interface import clear
-
-"""This module contains the class Machine for the baking simulation."""
-
-      
+   
 class Machine:
-    """Implements the Machine(Baker3000) and has multiple methods relating to what the machine itself can do, in addition to the ingredients it holds.
-    """
+    """Implements the Machine(Baker3000) and has multiple methods relating to what the machine itself can do, in addition to the ingredients it holds."""
 
     def __init__(self):
         """Creates an instance of the Machine"""        
@@ -149,7 +145,7 @@ class Machine:
         #if a user adds a new recipe and bakes that, there will be no corresponding text file so an empty space will be shown
         else:
             print("\n")
-        print(f"Enjoy your {self.recipes.recipes[choice]['name'].capitalize()}\n \nReturning to Main Menu in 10 seconds...")
+        print(f"Enjoy your {self.recipes.recipes[choice]['name'].capitalize()}\n \nReturning to Main Menu in 5 seconds...")
 
 
     def bake_treat(self, choice):
@@ -181,7 +177,7 @@ class Machine:
         with open("date_last_accessed.txt", "a") as f: #Stores date that baked good was made on external JSON doc
             baked_good = str(self.recipes.recipes[choice]['name'])
             f.write(f"\n{baked_good},")
-        time.sleep(5)
+        time.sleep(3)
         for ingredient, required_amount in self.recipes.recipes[choice].items(): # Reduce ingredient amounts
             if ingredient in ['name', 'bake time']:
                 continue

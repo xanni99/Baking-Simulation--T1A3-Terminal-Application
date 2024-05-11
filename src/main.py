@@ -29,7 +29,7 @@ def main():
                 choice = str(choice_number)
                 ui.clear()
                 baker3000.bake_treat(choice)
-                time.sleep(6)
+                time.sleep(3)
             case "2": #User selects 'View Supply Levels'
                 ui.clear()
                 baker3000.list_ingredients()

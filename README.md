@@ -12,13 +12,6 @@ The PEP 8 style guide can be found [here](https://peps.python.org/pep-0008/).
 
 ## Application Features
 
-describe each feature, providing a walkthrough of the logic of the application.
-Ensure that the features allow you to demonstrate your understanding of the following language elements and concepts:
-
-- Use of variables and the concept of variable scope
-- loops and conditional control structures
-- error handling
-
 My terminal application, labeled Baker3000, is a baking simulation that runs as a machine that ultimately allows the user to bake themselves a tasty lil treat. In order to do this, the simulation includes 6 features (+ the ability to exit the simulation/turn off the machine) that can be accessed from a main interface. I will describe these features in more detail below.
 
 ### 1. Main Menu
@@ -186,6 +179,10 @@ The second list on the Trello Board was labelled 'Create Application' had cards 
 ![Screenshots of Trello Checklists](docs/trello_checklists_3.png)
 
 ## Help Documentation
+
+ACCURATELY describe: steps to install the application; dependencies required by the application; system/hardware requirements; features of the application.
+
+Writes multiple highly sophisticated scripts which facilitate the execution of the application.
 
 ## References
 
