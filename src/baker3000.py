@@ -6,8 +6,11 @@ colorama.init(autoreset=True)
 from recipes import Recipe
 from user_interface import clear
    
+   
 class Machine:
-    """Implements the Machine(Baker3000) and has multiple methods relating to what the machine itself can do, in addition to the ingredients it holds."""
+    """Implements the Machine(Baker3000) and has multiple methods relating to
+      what the machine itself can do, in addition to the ingredients it holds.
+      """
 
     def __init__(self):
         """Creates an instance of the Machine"""        
@@ -52,7 +55,6 @@ class Machine:
                 print(f"{Fore.YELLOW} {key.capitalize()} - I currently have {value} units available")
             if value >= 0 and value < 0.55 * max_quantity:
                 print(f"{Fore.RED} {key.capitalize()} - I currently have {value} units available")
-        #Colour Key 
         print(f"\n{Fore.GREEN} Green ={Fore.RESET} Enough of ingredient to be used in ALL recipes - NO NEED TO REFILL")
         print(f"{Fore.YELLOW} Yellow ={Fore.RESET} Enough of ingredient to be used in AT LEAST 1 recipe - MAY NEED TO REFILL")
         print(f"{Fore.RED} Red ={Fore.RESET} Not enough of ingredient to be used in ANY recipes - NEED TO REFILL")
@@ -75,7 +77,7 @@ class Machine:
                 self.list_ingredients()
                 try:
                     ingredient_to_refill = input("\nPlease enter the name of the ingredient you would like to refill\n").lower()
-                    max_quantity = self.max_quantities.get(ingredient_to_refill) 
+                    max_quantity = self.max_quantities.get(ingredient_to_refill)
                     clear()
                     if max_quantity is not None:
                         current_quantity = self.ingredients.get(ingredient_to_refill)
@@ -142,11 +144,9 @@ class Machine:
         if choice == '4':
             with open("muffin.txt", "r") as f:
                 print(f.read())
-        #if a user adds a new recipe and bakes that, there will be no corresponding text file so an empty space will be shown
         else:
             print("\n")
         print(f"Enjoy your {self.recipes.recipes[choice]['name'].capitalize()}\n \nReturning to Main Menu in 5 seconds...")
-
 
     def bake_treat(self, choice):
         """Uses user input (choice) to 'bake' the chosen baked good.\n 
@@ -173,25 +173,24 @@ class Machine:
         time.sleep(2)
         clear()
         print(f"Here are your {self.recipes.recipes[choice]['name']}")
-        self.display_treat(choice) #display ASCII image of baked good
-        with open("date_last_accessed.txt", "a") as f: #Stores date that baked good was made on external JSON doc
+        self.display_treat(choice) 
+        with open("date_last_accessed.txt", "a") as f:
             baked_good = str(self.recipes.recipes[choice]['name'])
             f.write(f"\n{baked_good},")
         time.sleep(3)
-        for ingredient, required_amount in self.recipes.recipes[choice].items(): # Reduce ingredient amounts
+        for ingredient, required_amount in self.recipes.recipes[choice].items(): 
             if ingredient in ['name', 'bake time']:
                 continue
             self.ingredients[ingredient] -= required_amount
         self.save_ingredients()
-
     
     def clean_machine(self):
         """When called, the machine undergoes a cleaning cycle.\n
         The machine is cleaned using ingredients, soap and water.\n
         Soap and Water levels are adjusted accordingly and saved to external JSON file
-        """      
+        """ 
+
         clear()
-        #Check there is enough soap and water
         if self.ingredients["water"] >= 100 and self.ingredients["soap"] >= 15:
             self.ingredients["water"] -= 100
             self.ingredients["soap"] -= 15
@@ -203,9 +202,6 @@ class Machine:
             clear()
             self.save_ingredients()
             print("Returning to Main Menu...")
-        #Error occurs if there is not enough ingredients
         else:
             print("Unable to Clean Machine :(\n")
             print("I do not have enough Water and Soap, please refill these")
-
-

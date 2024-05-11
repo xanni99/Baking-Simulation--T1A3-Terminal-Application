@@ -33,38 +33,6 @@ class TestColourListed:
             ingredient_capture
             == "\033[32m Eggs - I currently have 5 units available\n\033[33m Milk - I currently have 350 units available\n\033[31m Butter - I currently have 210 units available"
         )
-      
-# class TestRefillIngredients:
-#     def mock_ingredients(self):
-#         return {
-#             "eggs": 4,
-#             "milk": 600,
-#             "butter": 600,
-#             "flour": 600,
-#             "sugar": 600,
-#             "chocolate": 600,
-#             "vanilla": 100,
-#             "water": 300,
-#             "soap": 50
-#         }
-    
-    # def test_valid_refill(self, monkeypatch):
-    #     # Test a valid refill scenario
-    #     baker3000 = Machine()
-    #     baker3000.ingredients = self.mock_ingredients()
-    #     mock_user_inputs = iter(['1', "eggs", '2'])
-    #     monkeypatch.setattr("builtins.input", lambda _: next(mock_user_inputs))
-    #     baker3000.refill_ingredients()
-    #     assert baker3000.ingredients["eggs"] == 6
-    #     
-
-    # def test_invalid_ingredient_name(self, monkeypatch, capsys):
-    #     # Test scenario where an invalid ingredient name is entered
-    #     baker3000 = Machine()
-    #     monkeypatch.setattr('builtins.input', lambda _: 'invalid_ingredient')
-    #     baker3000.refill_ingredients()
-    #     captured = capsys.readouterr()
-    #     assert "is not a valid ingredient" in captured.out
 
 
 class TestCleaning:

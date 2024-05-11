@@ -63,37 +63,6 @@ def test_list_recipes(capsys):
     )
 
 
-# def existing_recipes():
-#     with open("stored_recipes.json", "r") as f:
-#         recipe = Recipe()
-#         recipe.recipes = json.load(f)
-
-
-# def test_add_recipe(monkeypatch, capsys):
-#     user_inputs = iter(
-#         [
-#             "Test Recipe",  # Recipe Name
-#             "2",  # Eggs
-#             "250",  # Milk
-#             "150",  # Butter
-#             "200",  # Flour
-#             "250",  # Sugar
-#             "0",  # Chocolate
-#             "15",  # Vanilla
-#             "45",  # Bake Time
-#         ]
-#     )
-#     monkeypatch.setattr("builtins.input", lambda _: next(user_inputs))
-#     recipe = Recipe()
-#     recipe.recipes = existing_recipes
-#     recipe.add_recipe()
-#     captured = capsys.readouterr()
-#     assert (
-#         captured.out
-#         == "You have succsessfully added 'Test Recipe' to the list of recipes!\nReturning to Main Menu...\n"
-#     )
-#     assert "Test Recipe" in [recipe["name"] for recipe in recipe.recipes.values()]
-
 class TestRecipeSelection:
     def test_valid_input(self, monkeypatch):
         inputs = iter(["1", "2", "3", "4"])
@@ -103,10 +72,3 @@ class TestRecipeSelection:
         assert recipe.recipe_selection() == 2 #Corresponds to Key of recipe for Vanilla Cupcakes
         assert recipe.recipe_selection() == 3 #Corresponds to Key of recipe for Brownies
         assert recipe.recipe_selection() == 4 #Corresponds to Key of recipe for Chocolate Muffins
-        
-    # def test_non_recipe_number_input(self, monkeypatch):
-    #     monkeypatch.setattr('builtins.input', lambda _: "999")
-    #     recipe = Recipe()
-    #     with pytest.raises(KeyError):
-    #         recipe.recipe_selection()
-
