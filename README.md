@@ -65,12 +65,11 @@ In order to 'bake' the user a treat, the following steps occur:
 
 These steps can be observed in the following code.
 
-**INSERT BAKE_TREAT CODE HERE***********************
+![Code for bake_treat method](docs/bake_treat_code.png)
 
 As you can see from the code above, this function accepts 'choice'. Choice refers to the user's selection of which baked treat they would like to bake (collected earlier by the recipe_selection method).
 
 Additionally, it can be seen that 2 for loops had to be used. The first for loop is used in order to retreive the individual ingredient levels required for the chosen recipe. It can also be seen that within this loop the keys 'name' and 'bake time' were excluded from the loop as these are not ingredients and are not required in this part of the function. The second time the for loop is used is to reduce the amount of ingredients required by the recipe from the machine itself, in order to accurately represent the baked good being made. 
-
 
 ### 3. View Supply Levels
 
@@ -78,9 +77,9 @@ The third feature within the Baker3000 baking simulation, is the basic ability t
 
 ![Screenshot of user terminal after selecting list_ingredients](docs/list_ingredients.png)
 
-As can be seen in the image above, the ingredients the machine stores are listed and state the current level of that ingredient. In addition to this, they are colour coded depending on how much of the ingredient they have available (as a % of the maximum amount the machine can store). A key is provided that explains if the ingredient is coloured green, there is enough of that ingredient to make ANY of the stored recipes, and the user will not have to refill that ingredient before baking something. Yellow and red are also defined (as seen in picture above). 
+As can be seen in the image above, the ingredients the machine stores are listed and state the current level of that ingredient. In addition to this, they are colour coded depending on how much of the ingredient they have available (as a % of the maximum amount the machine can store). A key is provided that explains if the ingredient is coloured green, there is enough of that ingredient to make ANY of the stored recipes, and the user will not have to refill that ingredient before baking something. Yellow and red are also defined (as seen in picture above).
 
-In order to colour the ingredients based on their current levels, a for loop had to be used. 
+In order to colour the ingredients based on their current levels, a for loop had to be used.
 
 ![Screenshot of code for list_ingredients function](docs/list_ingredients_code.png)
 
@@ -148,7 +147,7 @@ The 7th and final feature of the Baker3000 baking simulation is the ability to V
 
 ![Screenshot of user terminal after calling baking_log method](docs/baking_log.png)
 
-In order for this feature to work, 2 main functions/steps had to be implemented. Firstly, whenever the machine was accessed, the current date had to be recorded, and secondly, the name of each baked good made after using the 'Bake a Treat' feature had to be added under this date. 
+In order for this feature to work, 2 main functions/steps had to be implemented. Firstly, whenever the machine was accessed, the current date had to be recorded, and secondly, the name of each baked good made after using the 'Bake a Treat' feature had to be added under this date.
 
 In order to do this, the following code was implemented.
 
