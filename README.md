@@ -93,9 +93,9 @@ When the user input == '3' (from the main menu) the user is presented with the f
 
 ![screenshot of user terminal after selecting refill ingredients](docs/refill_ingredients.png)
 
-As you can see from the image above, the user is again presented with the list of ingredients and their current values (colour-coded to represent ability to make a recipe), in addition to an option to either refill ingredients or return to the main menu.
+As you can see from the image above, the user is again presented with the list of ingredients and their current values (colour-coded to represent ability to make a recipe), in addition to an option to either refill ingredients or return to the main menu. This is the first user input collected if this method is called. If the user does not input a valid option (a number other than '1' or '2' or any string), this will lead to the else statement printining an invalid input message, taking the user back to the first 'decision' input at the start of the loop.
 
-If the user selects to refill an ingredient, they are asked which ingredient they would like to refill and if this is a valid ingredient, how much/many units they would like to add.
+If the user selects to refill an ingredient, they are asked which ingredient they would like to refill, and if this is a valid ingredient, how much/many units they would like to add.
 
 This is represented by the following code:
 
@@ -160,6 +160,30 @@ As you can see from the code above firstly there had to be an external file that
 The second step (recording each baked good that is made) occurs directly after each baked good is made and can be found in the code for 'Bake a treat'.
 
 ## Implementation Plan
+
+In order to plan and implement the steps required to build the Baker3000 simulation, Trello was used as a suitable project management platform.
+
+The link to my Trello board for this project can be found [here](https://trello.com/invite/b/7f5AiuN5/ATTIcbc23e43b16d88b37d73700ddb9f72d5886A6240/baker-3000).
+
+![Main page of Trello Board used to manage project](docs/trello_board_main.png)
+
+*NOTE: There are more cards in the 'Create Application' list that can't be seen.*
+
+In order to establish the management of my project, I ordered my Trello board into 4 lists, and used labels and due dates to identify the importance/priority of each card.
+
+The colour key for the labels can be found below.
+
+![Colour key for labels used on Trello board](docs/trello_labels.png)
+
+Firstly, I had an 'Assignment Overivew' list which broke the project down into the 6 broad steps that had to be taken in order to submit a complete assignment. This is where I implemented a timeline and due dates as to when each of these broad steps should be complted by. I did this as I was unsure of how long each little card (within the other lists) would take (+ found myself going back and forth between cards) so this way it gave me an overall cut-off time to have each step done by.
+
+The next 3 lists represented one of the steps in the overivew list, which meant once each card had been ticked off on that list, the corresponding card on the overview list could be marked as completed.
+
+The second list on the Trello Board was labelled 'Create Application' had cards that represented the classes and features that needed to be coded in order for my application to run. Each of these cards had checklists, that further explained what needed to be done in order to complete that card. Please follow the link provided to Trello above to see this in full detail but an overview is provided below.
+
+![Screenshots of Trello Checklists](docs/trello_checklists_1.png)
+![Screenshots of Trello Checklists](docs/trello_checklists_2.png)
+![Screenshots of Trello Checklists](docs/trello_checklists_3.png)
 
 ## Help Documentation
 
