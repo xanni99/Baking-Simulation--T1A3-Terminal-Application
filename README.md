@@ -182,9 +182,75 @@ The second list on the Trello Board was labelled 'Create Application' had cards 
 
 ### Steps to Install Application
 
+In order to install and run this terminal application (Baker3000), please follow the following steps:
+
+1. Git Clone Project Code
+
+- Follow this [link](https://github.com/xanni99/T1A3-Terminal-Application) to the GitHub repository for this application.
+- Click the green < > Code Button
+- From the drop down menu, copy the link generated when you click 'SSH'
+- Open Terminal from your computer and navigate to a folder you would like to clone the application into.
+- Clone the github repository by using the 'git clone' command and pasting the copied link
+
+    ```git clone git@github.com:xanni99/T1A3-Terminal-Application.git```
+
+2. Navigate into SRC folder of Cloned Directory (T1A3-Terminal-Application)
+
+- ```cd T1A3-Terminal-Application```
+- ```cd src```
+
+3. Run Application (+ install requirements)
+
+- ```bash run_application```
+
 ### Dependencies Required
 
+```py
+colorama==0.4.6
+iniconfig==2.0.0
+Jinja2==3.1.4
+MarkupSafe==2.1.5
+packaging==24.0
+pdoc==14.4.0
+pluggy==1.5.0
+Pygments==2.18.0
+pytest==8.2.0
+```
+
 ### System/ Hardware Requirements
+
+- Operating System:
+  - Windows 7-10 or 11
+  - Mac OS X 10.11 or higher, 64-bit
+  - Linux: RHEL 6/7, 64-bit (almost all libraries also work in Ubuntu)
+- x86 64-bit CPU (Intel / AMD architecture)
+- 4 GB RAM
+- 5 GB free disk space
+
+(Kinsta®, 2023)
+
+### Software Requirements
+
+- Python 3
+  - This application requires Python 3.
+  - To check if you have Python 3 installed, enter ```python --version``` into your terminal.
+  - If you do not have Python 3 installed, or do not have the latest version, you can download/update [here](https://www.python.org/downloads/).
+
+- Pip 3
+  - This application requires pip 3.
+  - Pip should be installed during the installation instructions.
+
+### Command Line Arguments
+
+When running the Baker3000 baking simulation, the terminal will prompt the user for input multiple times throughout the simulation.
+
+There are 2 types of input that the user may have to enter:
+
+1. Firstly, the user may have to enter a number that corresponds to a menu item. For example the user would have to input the number '1', if they would like to 'Bake a Treat'.
+
+![Terminal screenshot of main menu](docs/main_menu.png)
+
+2.The second type of input a user may have to enter is a string. For example, when they are refilling an ingredient, they will have to type in the name of ingredient (can be caps, lowercase or a mixture).
 
 ### Features of Baker3000
 
@@ -196,5 +262,7 @@ The features of the Baker3000 Simulation are outlined in the following Pydoc doc
 ![Functions for user_interface](docs/pydoc4.png)
 
 ## References
+
+Kinsta®. (2023). How To Install Python on Windows, macOS, and Linux. [online] Available at: https://kinsta.com/knowledgebase/install-python/.
 
 van Rossum, G., Warsaw, B. and Coghlan, N. (2001). PEP 8 – Style Guide for Python Code. [online] Python.org. Available at: https://peps.python.org/pep-0008/.
