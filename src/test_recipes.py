@@ -59,7 +59,8 @@ def test_list_recipes(capsys):
     captured = capsys.readouterr()
     assert (
         captured.out
-        == "1 Chocolate Chip Cookies\n2 Vanilla Cupcakes\n3 Brownies\n4 Chocolate Muffins\n444 Random Pick ** Surprise Me **\n"
+        == "1 Chocolate Chip Cookies\n2 Vanilla Cupcakes\n3 Brownies\n4 "
+            "Chocolate Muffins\n444 Random Pick ** Surprise Me **\n"
     )
 
 
@@ -68,7 +69,7 @@ class TestRecipeSelection:
         inputs = iter(["1", "2", "3", "4"])
         monkeypatch.setattr("builtins.input", lambda _: next(inputs))
         recipe = Recipe()
-        assert recipe.recipe_selection() == 1 #Corresponds to Key of recipe for Chocolate Chip Cookies
-        assert recipe.recipe_selection() == 2 #Corresponds to Key of recipe for Vanilla Cupcakes
-        assert recipe.recipe_selection() == 3 #Corresponds to Key of recipe for Brownies
-        assert recipe.recipe_selection() == 4 #Corresponds to Key of recipe for Chocolate Muffins
+        assert recipe.recipe_selection() == 1  # Chocolate Chip Cookie Recipe Key
+        assert recipe.recipe_selection() == 2  # Vanilla Cupcake Recipe Key
+        assert recipe.recipe_selection() == 3  # Brownie Recipe Key
+        assert recipe.recipe_selection() == 4  # Chocolate Muffin Recipe Key

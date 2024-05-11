@@ -1,4 +1,6 @@
-"""This module contains various functions that relate to the user interface of the machine"""
+"""This module contains various functions that relate to
+ the user interface of the machine
+ """
 import os
 
 
@@ -20,7 +22,8 @@ def goodbye_message():
 def user_menu():
     """Displays User Menu"""
     clear()
-    print("What would you like to do?\n \nPlease select a number from the list below\n")
+    print("What would you like to do?\n \nPlease select a number from "
+          "the list below\n")
     print("1. Bake a Treat!")
     print("2. View Supply Levels")
     print("3. Refill Ingredients")
