@@ -188,20 +188,31 @@ In order to install and run this terminal application (Baker3000), please follow
 
 - Follow this [link](https://github.com/xanni99/T1A3-Terminal-Application) to the GitHub repository for this application.
 - Click the green < > Code Button
-- From the drop down menu, copy the link generated when you click 'SSH'
+- From the drop down menu, copy the link generated when you click 'HTTPS'
 - Open Terminal from your computer and navigate to a folder you would like to clone the application into.
 - Clone the github repository by using the 'git clone' command and pasting the copied link
 
-    ```git clone git@github.com:xanni99/T1A3-Terminal-Application.git```
+    ```console
+    git clone https://github.com/xanni99/T1A3-Terminal-Application.git
+    ```
 
 2. Navigate into SRC folder of Cloned Directory (T1A3-Terminal-Application)
 
-- ```cd T1A3-Terminal-Application```
-- ```cd src```
+  - In order to navigate into the source code folder, paste the following:
+
+    ```console
+    cd T1A3-Terminal-Application
+    ```
+
+    ```console
+    cd src
+    ```
 
 3. Run Application (+ install requirements)
 
-- ```bash run_application```
+    ```console
+    bash run_application
+    ```
 
 ### Dependencies Required
 
